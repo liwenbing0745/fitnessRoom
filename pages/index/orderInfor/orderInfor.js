@@ -21,25 +21,28 @@ Page({
     coachInfo:'',//教练信息
     branchId:'',//门店id
     store:'',//门店信息
+    storeName: '',//门店简称
     course:'',
+    courseId: '',//课程id
     payPrice:'',//需支付金额
+    isPaying: true
   },
   // 获取用户是否登录
   onShow: function() {
     var that = this;   
   },
-
+  
   onLoad: function(options) {
     var that = this;
       that.setData({
        courseId:options.courseId
      })
+     
      // 调取课程详情
      let url = 'course/findById';
      let data = {id:that.data.courseId};
 
      request.postRequest(url, data).then((res) =>{
-         console.log(res,'res');
          that.setData({
            course:res.data.data.course,
            branchId:res.data.data.course.storeId,
@@ -67,6 +70,14 @@ Page({
              })
         })
      })
+     wx.getStorage({
+      key: 'userInfo',
+      fail:function(res){
+        wx.navigateTo({
+          url: '../../my/wxLogin/wxLogin',
+        })
+      }
+    })
   },
 
   // 跳转商品详情
@@ -95,7 +106,7 @@ Page({
       animationData: animation.export()
     });
     if (that.data.payType == 'wx') { //微信支付
-      that.onPayMoney3();
+      that.onPayMoney();
     } else {//余额支付
       that.payRequest();
     }
@@ -162,10 +173,61 @@ Page({
   },
 
   // 余额支付
-  payRequest(){
-      var that = this;
-
-  }
+  payRequest() {
+    let that = this;
+    let url = "https://www.dongjingfit.com/order/course/book";
+    let data = {
+      orderId: orderId,
+      courseId: courseId,
+      peopleNum: peopleNum,
+      remarks: remarks,
+      storeId: storeId,
+      storeName: storeName,
+      userId: userId,
+      payMethod: 2
+    }
+    if (!this.data.isPaying) {return false}
+    wx.request({
+      url: url,
+      data: data,
+      method: 'POST',
+      header: {
+        'content-type': 'application/json',
+        'token': app.globalData.tokenid,
+      },
+      success: function (res) {//服务器返回数据
+        if (res.data.data.data){
+          wx.showToast({
+            icon: 'success',
+            title: '支付成功',
+            duration: 3000,
+          })
+          wx.navigateBack({
+            delta: 1
+          })
+        }else{
+          wx.showToast({
+            icon: 'none',
+            title: res.data.tooltips,
+          })
+        }
+        that.setData({
+          isPaying: true
+        })
+      },
+      error: function (e) {
+        that.setData({
+          isPaying: true
+        })
+        reject('网络出错');
+        wx.showToast({
+          title: '网络错误，请重试',
+          icon: 'none',
+          duration: 3000,
+        });
+      }
+    })
+  },
 
 
 })

@@ -18,6 +18,7 @@ Page({
     coachInfo:'',//教练信息
     branchId:'',//门店id
     store:'',//门店信息
+    courseId: '',
   },
   // 获取用户是否登录
   onShow: function() {

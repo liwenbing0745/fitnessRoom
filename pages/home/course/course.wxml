@@ -55,7 +55,7 @@
             <view class=' ' style='width:120rpx;' bindtap='jumpjlJob'>
               <image src="{{item.avatar}}" class="slide-image bd-rs-10" style="width:120rpx;height:120rpx;border-radius:75rpx;" />
             </view>
-            <view class='pd-lr-20 flx_1 dis_flx al-c' bindtap='jumpFatBurn' data-courseid = "{{item.courseId}}" data-title='{{item.courseName}}'>
+            <view class='pd-lr-20 flx_1 dis_flx al-c' bindtap='jumpFatBurn' data-courseid="{{item.courseId}}" data-title='{{item.courseName}}'>
               <view>
                 <view class=' ft-sz-30  '>{{item.courseName}}</view>
                 <view class='mt-20 ft-sz-24 ft-co-a1'>
@@ -68,7 +68,7 @@
                 </view>
               </view>
             </view>
-            <view class='txt-r mt-20 dis_flx al-c' style='width:100rpx;' data-title='{{item.courseName}}' data-courseid = "{{item.courseId}}" bindtap='jumpFatBurn'>
+            <view class='txt-r mt-20 dis_flx al-c' style='width:100rpx;' data-title='{{item.courseName}}' data-courseid="{{item.courseId}}" bindtap='jumpFatBurn'>
               <!-- 确认收货 -->
               <view class='flx_1 dis_flx flx_dir_row ju-r ft-sz-24' style='text-align:right;'>
                 <view class='pd-lr-10 txt-c'>

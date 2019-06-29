@@ -172,7 +172,6 @@ Page({
       }
     })
     let content = app.globalData.content
-    console.log(content,'content')
 
     let packagingFee = 0
     let shippingFee = 0
@@ -222,10 +221,15 @@ Page({
     let that = this
     // 获取用户地址
     let addressUrl = "address/findByToken"
+    let address = []
     request.postRequest(addressUrl, {}).then((res) => {
-      console.log(res.data.data.address)
+      for (let i = 0;i < res.data.data.address.length; i++) {
+        if (res.data.data.address[i]['isDefault'] == 'Y') {
+          address = res.data.data.address[i]
+        }
+      }
       that.setData({
-        address: res.data.data.address
+        address: address
       })
     })
   },
@@ -359,7 +363,7 @@ Page({
   },
 
 // 微信支付
-  onPayMoney3: function() {
+  onPayMoney: function() {
     var that = this;
     let num = that.data.num;
     let infoSettingId = that.data.infoSettingId;  //用户ID
@@ -553,7 +557,7 @@ Page({
     });
     if (this.data.tabIndex == 2) {
       if (that.data.payType == 'wx') { //微信支付
-        that.onPayMoney3();
+        that.onPayMoney();
       } else {//余额支付
         that.payRequest();
       }

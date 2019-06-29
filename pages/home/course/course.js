@@ -333,7 +333,7 @@ Page({
     let current = e.currentTarget.dataset.current;
     let areaCode = e.currentTarget.dataset.id;
     let areaId = e.currentTarget.dataset.areaid;//城市id
-    console.log(areaId,'areaIdareaIdareaId');
+    // console.log(areaId,'areaIdareaIdareaId');
     that.setData({
       currentTab: e.currentTarget.dataset.current
     })

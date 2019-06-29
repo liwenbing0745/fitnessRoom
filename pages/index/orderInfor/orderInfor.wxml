@@ -41,7 +41,7 @@
     </view> -->
   </view>
   <view class='mt-100 txt-c ft-co-ff'>
-    还需支付
+    需支付
     <text class='ft-co-f50 ft-sz-50'>￥{{payPrice}}</text>
   </view>
   <view class='pd-20 ft-sz-24 mt-50'>
