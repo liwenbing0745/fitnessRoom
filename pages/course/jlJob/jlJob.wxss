@@ -1,0 +1,5 @@
+/* pages/course/jlJob/jlJob.wxss */
+.br-le{border-right:1px solid #a1a1a1;}
+.bb-le{border-bottom:1px solid #a1a1a1;}
+.date_btn{width:80rpx;height:80rpx;border-radius:40rpx;border:1px solid #ffa500;}
+.np-btn{width:100rpx;height:50rpx;line-height:50rpx;display:inline-block;}

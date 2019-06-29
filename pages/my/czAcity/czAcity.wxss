@@ -1,0 +1,25 @@
+/* pages/my/czAcity/czAcity.wxss */
+.mt-48{
+  margin-top:48rpx;
+}
+.mt-24{
+  margin-top:24rpx;
+}
+.mt-38{
+  margin-top:38rpx;
+}
+.mt-28{
+  margin-top:28rpx;
+}
+.ft-co-dc{
+  color:#dcdcdc;
+}
+
+
+
+
+
+
+
+
+

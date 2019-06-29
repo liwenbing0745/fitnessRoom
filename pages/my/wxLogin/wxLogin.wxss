@@ -1,0 +1,11 @@
+
+/**index.wxss**/
+.pt-50{padding-top:50rpx;}
+.my_round{width:30rpx;height:30rpx;line-height:30rpx;border-radius:15rpx;background-color:#e4393c;color:#fff;top:-10rpx;right:30rpx;}
+
+
+
+
+
+
+

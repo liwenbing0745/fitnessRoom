@@ -1,0 +1,10 @@
+/* pages/index/txtPage/txtPage.wxss */
+rich-text .rich-img {
+
+max-width: 100% ;
+display:block;
+
+}
+
+
+

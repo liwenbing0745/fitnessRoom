@@ -1,0 +1,153 @@
+<!--pages/home/lx/lx.wxml-->
+<view style='padding-bottom:100rpx;'>
+  <view class='bk-co-30'>
+    <!-- 切换 -->
+    <view class='bk-co-30' style='position:fixed;top:0;width:100%;height:100rpx;z-index:111111;'>
+      <view class='dis_flx ht-60 lh-50 flx_dir_row al-c pd-tb-20' style=''>
+        <view class="flx_50  txt-c " data-current="{{item.id}}" bindtap="swichNav" wx:for="{{list}}" wx:key="index">
+          <view class='ps-ralv' style=''>
+            <view class="notSelect {{currentTab==index ? 'on' : ''}}" style=''>
+              <view class='ft-sz-30 ft-co-7f st-ft-sz2 mt-10'>
+                <text class=''>{{item.list}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='mt-100 pd-20'>
+    <!-- 精选套餐 -->
+    <view wx:if='{{currentTab == 0}}' class='ft-co-a1 '>
+      <view class='pd-20 bk-co-30 mb-20' wx:for='{{content}}'>
+        <view class='dis_flx flx_dir_row al-c'>
+          <image bindtap='jumpGoodesDet' data-id='{{item.id}}' class='bd-rs-12' src='{{item.picturePath}}' style='width:280rpx;height:180rpx;'></image>
+          <view class='flx_1 pl-20'>
+            <view class='ft-co-ff dis_flx flx_dir_row al-c'>
+              <view class='flx_1' bindtap='jumpGoodesDet' data-id='{{item.id}}'>{{item.caterName}}</view>
+              <view style='width:150rpx;'>
+                <view class='dis_flx flx_dir_row al-c ju-r' style='width:100%;text-align:center;'>
+                  <view class='  ju-c lh-40 ' wx:if='{{item.color==1}}' bindtap='sub' data-index="{{index}}" style=''>
+                    <image class='' src='../../../image/jian@2x.png' style='width:40rpx;height:40rpx;'></image>
+                  </view>
+                  <view class='num  ft-sz-35  ju-c' wx:if='{{item.goodsNum>0}}' style='width:60rpx;'>
+                    <input class='' name='goodsNum' value='{{item.goodsNum}}' disabled></input>
+                  </view>
+                  <view class='  ju-c lh-40   ' bindtap='add' data-index="{{index}}" style=''>
+                    <image class='' src='../../../image/add@2x.png' style='width:40rpx;height:40rpx;'></image>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!-- <view class='ft-sz-24 mt-20 ft-co-7f' bindtap='jumpGoodesDet' data-id='{{item.id}}'>{{item.description}}</view> -->
+            <view class='dis_flx flx_dir_row al-c mt-30' bindtap='jumpOrder'>
+              <view class='flx_1 dis_flx ft-co-f50 al-c'>
+                <view>￥{{item.price}}</view>
+                <view class='ft-sz-20'> 元</view>
+                <!-- <view class='ft-sz-20 ft-co-ff bk-co-f50 ml-10 txt-c lh-30' style='width:80rpx;height:30rpx;'>
+                拼￥{{item.fightGroupPrice}}</view> -->
+              </view>
+              <view class=' txt-r ft-sz-26 ft-co-7f'>剩余
+                <text class='ft-co-ff ft-sz-30'>{{(item.num === null)?'0':item.num}}</text> 份</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 每日精选合计 -->
+      <view wx:if='{{allNum>0}}' class='bk-co-30 lh-80' style='height:80rpx;' style='position:fixed;bottom:0;left:0;width:100%;'>
+        <view class='dis_flx flx_dir_row al-c txt-c'>
+            <view class='flx_1 ft-co-f79 ft-sz-35'>合计：￥{{allTotal}}
+              <text class='ft-sz-26'>元</text>
+            </view>
+            <view class='flx_1' bindtap='jumpOrder'>
+              <text class='bk-co-feb ft-co-21 ft-sz-35' style='padding:5rpx 40rpx;border-radius:30rpx;'>结算({{allNum}})</text>
+            </view>
+          </view>
+      </view>
+    </view>
+    <!-- 套餐专区 -->
+    <view wx:if='{{currentTab == 1}}' class='ft-co-a1'>
+      <!-- 分类选择 -->
+      <view class='pd-lr-20 bk-co-30 mb-20'>
+        <!-- 性别 -->
+        <view class='dis_flx flx_dir_row al-c lh-100  pb-10'>
+          <view style=''>性别</view>
+          <view class='flx_1 ml-20'>
+            <text bindtap='swichSex' class="ml-20 bd-le bd-rs-5 {{currentTab1==index ? 'sex' : ''}}" wx:for='{{sex}}' data-current1="{{item.id}}" data-name="{{item.name}}" wx:key="index" style='padding:5rpx 35rpx;'>{{item.sex}}</text>
+          </view>
+        </view>
+        <!-- 品类 -->
+        <view class='dis_flx flx_dir_row al-c lh-100  pb-10'>
+          <view>品类</view>
+          <view class='flx_1 ml-20'>
+            <text bindtap='swichType' class="ml-20 bd-le bd-rs-5 {{currentTab2==index ? 'sex' : ''}}" wx:for='{{ptype}}' data-current2="{{item.id}}" data-name="{{item.name}}" wx:key="index" style='padding:5rpx 35rpx;'>{{item.ptype}}</text>
+          </view>
+        </view>
+        <!-- 时间 -->
+        <view class='dis_flx flx_dir_row al-c lh-100  pb-10'>
+          <view>时间</view>
+          <view class='flx_1 ml-20'>
+            <text bindtap='swichTime' class="ml-20 bd-le bd-rs-5 {{currentTab3==index ? 'sex' : ''}}" wx:for='{{time}}' data-current3="{{item.id}}" data-name="{{item.name}}" wx:key="index" style='padding:5rpx 35rpx;'>{{item.time}}</text>
+          </view>
+        </view>
+        <!-- 品类1 -->
+        <view class='dis_flx flx_dir_row al-c lh-100  pb-10'>
+          <view>品类</view>
+          <view class='flx_1 ml-20'>
+            <text bindtap='swichType1' class="ml-20 bd-le bd-rs-5 {{currentTab4==index ? 'sex' : ''}}" wx:for='{{ptype1}}' data-current4="{{item.id}}" data-name="{{item.name}}" wx:key="index" style='padding:5rpx 35rpx;'>{{item.ptype1}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- 套餐A -->
+      <view wx:for='{{packageA}}'>
+        <image bindtap='jumpGoodesDet' data-id='{{item.id}}' class='bd-rs-10' src='{{item.picturePath}}' style='width:100%;height:200rpx;'></image>
+        <view class='pd-lr-20 bk-co-30 mb-20 lh-60 txt-c btn_botton_box'>
+          <view class='dis_flx al-c pt-20'>
+            <view class='ft-co-ff flx_1 txt-l'>{{item.caterName}}</view>
+            <view style='width:150rpx;'>
+              <view class='dis_flx flx_dir_row al-c ju-r' style='width:100%;text-align:center;'>
+                <view class='  ju-c  ' wx:if='{{item.color==1}}' bindtap='sub1' data-index="{{index}}" >
+                  <image class='' src='../../../image/jian@2x.png' style='width:40rpx;height:40rpx;'></image>
+                </view>
+                <view class='num  ft-sz-35  ju-c' wx:if='{{item.goodsNum>0}}' style='width:60rpx;'>
+                  <input class='' name='goodsNum' value='{{item.goodsNum}}' disabled></input>
+                </view>
+                <view class='  ju-c    ' bindtap='add1' data-index="{{index}}" >
+                   <image class='' src='../../../image/add@2x.png' style='width:40rpx;height:40rpx;'></image>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="xuanzeBox" bindtap='jumpGoodesDet' data-id='{{item.id}}'>
+            <text class="mr-20  bd-rs-5 sex" style='padding:5rpx 35rpx;'>{{item.gender}}</text>
+            <text class="mr-20  bd-rs-5 sex" style='padding:5rpx 35rpx;'>{{item.category}}</text>
+            <text class="mr-20  bd-rs-5 sex" style='padding:5rpx 35rpx;'>{{item.cycle}}</text>
+            <text class="mr-20  bd-rs-5 sex" style='padding:5rpx 35rpx;'>{{item.meal}}</text>
+          </view>
+          <view bindtap='jumpGoodesDet' data-id='{{item.id}}' class='dis_flx flx_dir_row al-c'>
+            <view class='flx_1 txt-l'>单价：
+              <text class='ft-co-f50'>{{item.price}} 元</text>
+              <!-- <text class='ft-sz-20 ft-co-ff bk-co-f50 ml-20' style='padding:0 10rpx;'>拼￥36</text> -->
+            </view>
+            <view class='flx_1 txt-r'>剩余：
+              <text class='ft-co-ff'>{{(item.num === null)?'0':item.num}}</text> 份</view>
+          </view>
+        </view>
+
+        <!-- 套餐专区合计 -->
+        <view wx:if='{{allNum1>0}}' class='bk-co-30 lh-80' style='height:80rpx;' style='position:fixed;bottom:0;left:0;width:100%;'>
+          <view class='dis_flx flx_dir_row al-c txt-c'>
+            <view class='flx_1 ft-co-f79 ft-sz-35'>合计：￥{{allTotal1}}
+              <text class='ft-sz-26'>元</text>
+            </view>
+            <view class='flx_1' bindtap='jumpOrder'>
+              <text class='bk-co-feb ft-co-21 ft-sz-35' style='padding:5rpx 30rpx;border-radius:30rpx;'>结算({{allNum1}})</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

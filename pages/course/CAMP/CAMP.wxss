@@ -1,0 +1,100 @@
+/* pages/course/CAMP/CAMP.wxss */
+.date_btn{width:80rpx;height:80rpx;border-radius:40rpx;border:1px solid #ffa500;}
+.np-btn{width:100rpx;height:50rpx;line-height:50rpx;display:inline-block;}
+
+.maskLayer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.7;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+.choose1 {
+  width: 100%;
+  height:75%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  padding-top: 20rpx;
+}
+.choose3 {
+  width: 100%;
+  height:75%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #414141;
+}
+.choose1_4 {
+  width: 100%;
+  height:75%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+}
+
+.maskLayer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.7;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+.choose1 {
+  width: 100%;
+  height:75%;
+  overflow: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  padding-top: 20rpx;
+}
+.choose1_1 {
+  width: 100%;
+  height:75%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 200rpx;
+  z-index: 2000;
+  padding-top: 20rpx;
+}
+.choose3 {
+  width: 100%;
+  height:75%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #414141;
+}
+
+
+
+
+
+
+
+
+
+
+
+

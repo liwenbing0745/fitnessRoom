@@ -1,0 +1,56 @@
+<!--index.wxml-->
+<view class="container pb-100">
+  <!-- 收货地址 -->
+  <view class='' wx:if='{{address.length > 0}}'>
+    <radio-group class="radio-group">
+      <view wx:for='{{address}}' class='pd-lr-30 mt-20'>
+        <view class='bk-co-30 bd-rad-10 bd-rs-10' style='height:240rpx;'>
+          <view bindtap='jumpShopCarId' data-id='{{item.id}}'>
+            <view class='pd-lr-20 ft-sz-30 ft-co-ff' style='padding-top:20rpx;'>
+              <view class='dis_flx al-c ' style=''>
+                <view class='flx_1'>{{item.contact}}</view>
+                <view class='flx_1  txt-r'>{{item.phoneCode}}</view>
+              </view>
+            </view>
+            <view class='dis_flx flx_dir_row bd-bt-le ' style='padding:30rpx 20rpx;'>
+              <view class='ft-sz-24 ft-co-66'>
+                <text wx:if="{{item.isdefault}} = 'Y'" class='bk-co-f50' style='padding:2rpx 20rpx;border-radius:20rpx;'>默认</text>
+                <text class='ft-co-a1 ml-10'> {{item.shippingAddress+item.detaAddress}}</text>
+              </view>
+            </view>
+          </view>
+          <view class='dis_flx flx_dir_row al-c ft-co-ff pd-lr-20 mt-20 lh-40 ft-co-66 ft-sz-24'>
+            <view class='flx_1' style=''>
+              <label class="radio ">
+                <radio name='address' data-id='{{item.id}}' checked="{{item.isdefault}}=='Y'" color='#ffa500' bindtap='check'>默认地址</radio>
+              </label>
+            </view>
+            <view class='txt-r flx_1 dis_flx flx_dir_row al-c  ft-sz-24'>
+              <view class='flx_1 dis_flx al-c ju-r' data-id='{{item.id}}' bindtap='writeBtn'>
+                <image src='{{imageUrl}}/image/607114209133350902.png' style='width:30rpx;height:30rpx'></image>
+                <text class='ml-10'>编辑</text> 
+              </view>
+              <view class='flx_1 dis_flx al-c ju-r' data-index='{{index}}' data-id='{{item.id}}' bindtap='deleteList'>
+                <image src='{{imageUrl}}/image/816974230843693647.png' style='width:30rpx;height:30rpx'></image>
+                <text class='ml-10'>删除</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </radio-group>
+  </view>
+
+  <view wx:else class='dis_flx txt-c ju-c mt-100 ft-co-a1' style='padding-bottom:100rpx;'>
+    <view>
+      <image src='{{imageUrl}}/image/666457407196724827.png' style='width:334rpx;height:345rpx;'></image>
+      <text class='mt-50'>暂无收货地址</text>
+    </view>
+  </view>
+
+</view>
+
+<!-- 添加收货地址 -->
+<view class=' lh-80 txt-c ' style='position:fixed;bottom:0;width:100%;'>
+  <view bindtap='chooseSezi' data-index='2' class='lh-100 bk-co-f50 txt-c' style='width:100%;height:100rpx;position:fixed;bottom:0;left:0;'>添加新地址</view>
+</view>

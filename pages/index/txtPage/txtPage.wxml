@@ -1,0 +1,5 @@
+<!--pages/index/txtPage/txtPage.wxml-->
+<view class='pd-20'>
+  <image class='mt-20' src='{{banner.filePath}}' style='width:100%'></image>
+  <rich-text class='ft-co-ff mt-20' nodes='{{banner.content}}'></rich-text>
+</view>

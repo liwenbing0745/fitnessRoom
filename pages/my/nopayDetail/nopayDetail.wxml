@@ -1,0 +1,144 @@
+<!--pages/home/lx/lx.wxml-->
+<view class='' style='padding-bottom:100rpx;'>
+  <view class='txt-c ft-sz-35 ft-co-f50' style='height:100rpx;line-height:100rpx;'>
+    <text>{{content.statusName}}</text>
+    <!-- <text>配送中</text>
+    <view>
+      <text>待收货</text>
+      <text class='ft-sz-28' style='padding:5rpx 10rpx;border:1px solid #ffa500;'>确认收货</text>
+    </view>
+    <view>
+      <text>待取货</text>
+      <text class='ft-sz-28' style='padding:5rpx 10rpx;border:1px solid #ffa500;'>确认取货</text>
+    </view>
+    <view>
+      <text>已完成</text>
+      <text class='ft-sz-28' style='padding:5rpx 10rpx;border:1px solid #ffa500;'>再来一单</text>
+    </view>
+    <text class='ft-co-a1'>已取消</text>
+    <view>
+      <text>代付款</text>
+      <text class='ft-sz-28' style='padding:5rpx 10rpx;border:1px solid #ffa500;'>立即支付</text>
+    </view> -->
+  </view>
+  <!-- 分割线 -->
+  <view class='bk-co-30' style='width:100%;height:10rpx;'></view>
+  <!-- 内容 -->
+  <view class=' pd-20'>
+    <view class='dis_flx al-c  ft-co-ff ft-sz-24'>
+      <view class='flx_1'>外卖订单：
+        <text>23495032432</text>
+      </view>
+      <view class='flx_1 txt-r'>
+        <text>{{content.deliveryTime}}</text>
+      </view>
+    </view>
+    <view class=' bk-co-30 bd-rs-10 mt-20'>
+      <view class='ft-co-a1 '>
+        <view class='pd-lr-10   bd-rs-10'>
+          <view>
+            <view class='pd-20 bk-co-30  bd-bt-le' wx:for='{{content.details}}'>
+              <view class='dis_flx flx_dir_row al-c'>
+                <image class='bd-rs-10' src='{{item.picturePath}}' style='width:150rpx;height:150rpx;'></image>
+                <view class='flx_1 pl-20 dis_flx al-c'>
+                  <view class='ft-co-ff flx_1'>{{item.productName}}</view>
+                  <view class=''>x{{item.num}}</view>
+                  <view class='ft-co-f50 flx_1 txt-r'>
+                    ￥{{item.price}}
+                    <text class='ft-sz-26'>元</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <!-- 包装费 -->
+          <view class='dis_flx flx_dir_row al-c lh-100 bd-bt-le pb-10 pd-lr-10 '>
+            <view class='dis_flx al-c  flx_1'>
+              <text class='ml-10 '>包装费</text>
+            </view>
+            <view class='dis_flx ju-r' style='width:200rpx;'>
+              ￥{{content.packagingMoney}}元
+            </view>
+          </view>
+          <!-- 配送费 -->
+          <view class='dis_flx flx_dir_row al-c lh-100 bd-bt-le  pb-10 pd-lr-10'>
+            <view class='dis_flx al-c  flx_1'>
+              <text class='ml-10'>配送费</text>
+            </view>
+            <view class='dis_flx ju-r' style='width:200rpx;'>
+              ￥2 元
+            </view>
+          </view>
+          <!-- 优惠金额 -->
+          <view class='dis_flx flx_dir_row al-c lh-100 bd-bt-le pb-10 pd-lr-10 ft-co-f50'>
+            <view class='dis_flx al-c  flx_1'>
+              <text class='ml-10'>优惠金额</text>
+            </view>
+            <view class='dis_flx ju-r ' style='width:200rpx;'>
+              ￥205 元
+            </view>
+          </view>
+          <!-- 备注 -->
+          <view class='dis_flx flx_dir_row al-c lh-100 pb-10 pd-lr-10' bindtap='jumpNote'>
+            <view class='dis_flx al-c  flx_1'>
+              <text class='ml-10'>备注</text>
+            </view>
+            <view class='dis_flx al-c ju-r ' style='width:300rpx;'>
+              <text class=' ft-co-99 '>{{content.remarks}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 商品合计 -->
+    <view class='dis_flx al-c  ft-co-ff ft-sz-24 pd-20'>
+      <view class='flx_1'>
+        共{{content.details.length}}件商品
+      </view>
+      <view class='flx_1 txt-r'>
+        实付：
+        <text class='ft-co-f50 ft-sz-30'>￥{{content.actualAmount}}元</text>
+      </view>
+    </view>
+    <!-- 收货地址 -->
+    <view class=' bk-co-30 bd-rs-10 '>
+      <view class='ft-co-a1 '>
+        <view class='pd-lr-10   bd-rs-10 ft-co-ff'>
+          <!-- 优惠金额 -->
+          <view class='dis_flx flx_dir_row  lh-80 bd-bt-le pb-10 pd-lr-10 '>
+            <view class='dis_flx   '>
+              <text class='ml-10'>收货地址</text>
+            </view>
+            <view class='flx_1 ju-r txt-r' style='width:200rpx;'>
+              <view>西安市高新区东村发的时候...</view>
+              <view>张先生
+                <text class='ml-10'>{{content.phoneNumber}}</text>
+              </view>
+            </view>
+          </view>
+          <!-- 备注 -->
+          <view class='dis_flx flx_dir_row al-c lh-100 pb-10 pd-lr-10' bindtap='jumpNote'>
+            <view class='dis_flx al-c  flx_1'>
+              <text class='ml-10'>送达时间</text>
+            </view>
+            <view class='dis_flx al-c ju-r ' style='width:300rpx;'>
+              <text class='  '>{{content.deliveryTime}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 客服电话 -->
+    <view class='dis_flx al-c  ft-co-ff ft-sz-24 pd-20'>
+      <view class='flx_1'>
+        客服时间
+      </view>
+      <view class='flx_1 txt-r'>
+        0755-9080948
+      </view>
+    </view>
+  </view>
+
+
+</view>

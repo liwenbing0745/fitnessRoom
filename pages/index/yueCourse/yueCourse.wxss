@@ -1,0 +1,6 @@
+/* pages/home/course/course.wxss */
+.date_btn{width:80rpx;height:80rpx;border-radius:40rpx;border:1px solid #ffa500;}
+.np-btn{width:100rpx;height:50rpx;line-height:50rpx;display:inline-block;}
+
+
+

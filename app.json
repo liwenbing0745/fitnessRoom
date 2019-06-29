@@ -1,0 +1,76 @@
+{
+  "pages": [
+    "pages/home/index/index",
+    "pages/home/catering/catering",
+    "pages/index/orderInfor/orderInfor",
+    "pages/catering/goodsDetail/goodsDetail",
+    "pages/course/jlJob/jlJob",
+    "pages/course/CAMP/CAMP",
+    "pages/course/CAMPdetial/CAMPdetial",
+    "pages/my/nopayDetail/nopayDetail",
+    "pages/catering/order/order",
+    "pages/home/my/my",
+    "pages/course/topUp/topUp",
+    "pages/index/fatBurn/fatBurn",
+    "pages/my/czAcity/czAcity",
+    "pages/index/yueCourse/yueCourse",
+    "pages/my/personInfo/personInfo",
+    "pages/my/statement/statement",
+    "pages/my/kcNoPayment/kcNoPayment",
+    "pages/index/goodsDetail/goodsDetail",
+    "pages/home/course/course",
+    "pages/course/sijiao/sijiao",
+    "pages/my/NoPayment/NoPayment",
+    "pages/catering/zqAddress/zqAddress",
+    "pages/catering/address/address",
+    "pages/catering/addAddress/addAddress",
+    "pages/catering/tel/tel",
+    "pages/catering/note/note",
+    "pages/my/wxLogin/wxLogin",
+    "pages/index/txtPage/txtPage"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7f7f7f",
+    "backgroundColor": "#303030",
+    "borderStyle": "white",
+    "selectedColor": "#ffa500",
+    "list": [
+      {
+        "iconPath": "image/md1.png",
+        "selectedIconPath": "image/md2.png",
+        "pagePath": "pages/home/index/index",
+        "text": "门店"
+      },
+      {
+        "iconPath": "image/js@2x.png",
+        "selectedIconPath": "image/js@2x1.png",
+        "pagePath": "pages/home/course/course",
+        "text": "课程"
+      },
+      {
+        "iconPath": "image/zc@2x.png",
+        "selectedIconPath": "image/zc@2x1.png",
+        "pagePath": "pages/home/catering/catering",
+        "text": "配餐"
+      },
+      {
+        "iconPath": "image/my@2x.png",
+        "selectedIconPath": "image/my@2x1.png",
+        "pagePath": "pages/home/my/my",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission":{
+     "scope.userLocation":{
+        "desc":"您的位置将用于小程序位置接口的效果展示"
+     }
+  }
+}

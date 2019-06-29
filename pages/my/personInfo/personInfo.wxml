@@ -1,0 +1,165 @@
+<!--pages/my/personInfo/personInfo.wxml-->
+<view>
+  <!-- <view class='pd-lr-20 mt-30'>
+    <view class='pd-lr-30 ft-sz-35 ft-co-ff  bk-co-30  bd-rs-10 dis_flx al-c ' style='height:220rpx;'>
+      <view class='flx_1'>
+        <view>
+          <open-data type="userNickName" lang="zh_CN"></open-data>
+        </view>
+      </view>
+      <view class='flx_1 dis_flx ju-r al-c'>
+        <view class="userinfo-avatar">
+          <open-data type="userAvatarUrl" style='width:130rpx;height:130rpx;border-radius:65rpx;'></open-data>
+        </view>
+      </view>
+    </view>
+  </view> -->
+  <!-- 添加个人资料 -->
+  <view class='pd-lr-20 mt-30' wx:if='{{!changeInfo}}'>
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class='  ft-sz-30 ft-co-a1  bk-co-30  bd-rs-10' style=''>
+        <!-- <view class='pd-tb-30 bd-bt-le'>
+          <view class='dis_flx flx_dir_row al-c '>
+            <view class='flx_1 txt-l  ml-20'>手机号</view>
+            <view class='flx_1 pr-20 txt-r'>
+              <input placeholder="请输入手机号" name='phoneNumber'/>
+            </view>
+          </view>
+        </view> -->
+        <!-- <view class='pd-tb-30 bd-bt-le'>
+          <view class='dis_flx flx_dir_row al-c '>
+            <view class='flx_1 txt-l  ml-20'>姓名</view>
+            <view class='flx_1 pr-20 dis_flx al-c ju-r'>
+              <view class='flx_1 pr-20 txt-r'>
+                <input placeholder="请输入姓名" name='name'/>
+              </view>
+            </view>
+          </view>
+        </view> -->
+        <view class='pd-tb-30 bd-bt-le'>
+          <view class='dis_flx flx_dir_row al-c '>
+            <view class='flx_1 txt-l  ml-20'>性别</view>
+            <view class='flx_1 pr-20 dis_flx al-c ju-r'>
+              <view class='mr-20 ft-co-ff'>
+                <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                  <view class="picker">
+                    {{array[index]}}
+                  </view>
+                </picker>
+              </view>
+              <image src='../../../image/xxx@2x.png' style='width:15rpx;height:22rpx;'></image>
+            </view>
+          </view>
+        </view>
+        <view class='pd-tb-30 bd-bt-le'>
+          <view class='dis_flx flx_dir_row al-c '>
+            <view class='flx_1 txt-l  ml-20'>生日</view>
+            <view class='flx_1 pr-20 dis_flx al-c ju-r'>
+              <view class='flx_1 pr-20 txt-r'>
+                <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                  <view class="picker">
+                    {{date}}
+                  </view>
+                </picker>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='pd-tb-30 bd-bt-le'>
+          <view class='dis_flx flx_dir_row al-c '>
+            <view class='flx_1 txt-l  ml-20'>体重</view>
+            <view class='flx_1 pr-20  txt-r'>
+              <input placeholder="请输入体重" name='bodyWeight' />
+            </view>
+          </view>
+        </view>
+        <view class='pd-tb-30 bd-bt-le'>
+          <view class='dis_flx flx_dir_row al-c '>
+            <view class='flx_1 txt-l  ml-20'>身高</view>
+            <view class='flx_1 pr-20 txt-r'>
+              <input placeholder="请输入身高" name='height' />
+            </view>
+          </view>
+        </view>
+      </view>
+      <!--  -->
+      <view class=' txt-c ' style='position:fixed;bottom:0;width:100%;line-height:98rpx;'>
+        <button class='lh-100 bk-co-feb ft-co-21 txt-c' form-type="submit" style='width:100%;height:98rpx;position:fixed;bottom:0;left:0;border-radius:0;'>提交</button>
+      </view>
+    </form>
+  </view>
+  <!-- 修改个人资料 -->
+  <view class='pd-lr-20 mt-30' wx:else>
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class='  ft-sz-30 ft-co-a1  bk-co-30  bd-rs-10' style=''>
+        <!-- <view class='pd-tb-30 bd-bt-le'>
+          <view class='dis_flx flx_dir_row al-c '>
+            <view class='flx_1 txt-l  ml-20'>手机号</view>
+            <view class='flx_1 pr-20 txt-r'>
+              <input placeholder="请输入手机号" name='phoneNumber' value='{{formData.phoneNumber}}' />
+            </view>
+          </view>
+        </view>
+        <view class='pd-tb-30 bd-bt-le'>
+          <view class='dis_flx flx_dir_row al-c '>
+            <view class='flx_1 txt-l  ml-20'>姓名</view>
+            <view class='flx_1 pr-20 dis_flx al-c ju-r'>
+              <view class='flx_1 pr-20 txt-r'>
+                <input placeholder="请输入姓名" name='name' value='{{formData.name}}' />
+              </view>
+            </view>
+          </view>
+        </view> -->
+        <view class='pd-tb-30 bd-bt-le'>
+          <view class='dis_flx flx_dir_row al-c '>
+            <view class='flx_1 txt-l  ml-20'>性别</view>
+            <view class='flx_1 pr-20 dis_flx al-c ju-r'>
+              <view class='mr-20 ft-co-ff'>
+                <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                  <view class="picker">
+                    {{array[index]}}
+                  </view>
+                </picker>
+              </view>
+              <image src='../../../image/xxx@2x.png' style='width:15rpx;height:22rpx;'></image>
+            </view>
+          </view>
+        </view>
+        <view class='pd-tb-30 bd-bt-le'>
+          <view class='dis_flx flx_dir_row al-c '>
+            <view class='flx_1 txt-l  ml-20'>生日</view>
+            <view class='flx_1 pr-20 dis_flx al-c ju-r'>
+              <view class='flx_1 pr-20 txt-r'>
+                <picker mode="date" value="{{date}}"  bindchange="bindDateChange">
+                  <view class="picker">
+                    {{date}}
+                  </view>
+                </picker>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='pd-tb-30 bd-bt-le'>
+          <view class='dis_flx flx_dir_row al-c '>
+            <view class='flx_1 txt-l  ml-20'>体重</view>
+            <view class='flx_1 pr-20  txt-r'>
+              <input placeholder="请输入体重" name='bodyWeight' value='{{formData.bodyWeight}}' />
+            </view>
+          </view>
+        </view>
+        <view class='pd-tb-30 bd-bt-le'>
+          <view class='dis_flx flx_dir_row al-c '>
+            <view class='flx_1 txt-l  ml-20'>身高</view>
+            <view class='flx_1 pr-20 txt-r'>
+              <input placeholder="请输入身高" name='height' value='{{formData.height}}' />
+            </view>
+          </view>
+        </view>
+      </view>
+      <!--  -->
+      <view class=' txt-c ' style='position:fixed;bottom:0;width:100%;line-height:98rpx;'>
+        <button class='lh-100 bk-co-feb ft-co-21 txt-c' form-type="submit" style='width:100%;height:98rpx;position:fixed;bottom:0;left:0;border-radius:0;'>修改</button>
+      </view>
+    </form>
+  </view>
+</view>

@@ -1,0 +1,248 @@
+.swiper-parent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+    z-index: 1;
+}
+.kt_vip{
+  width:100%;height:70rpx;line-height:70rpx;border-radius:50rpx;color:#fff;background-color:#fe3c00;
+}
+.ft-co-9e{color:#9e9e9e;}
+.ft-sz-40{font-size:40rpx;}
+/* swiper指示灯 */
+.swiper-box .wx-swiper-dots.wx-swiper-dots-horizontal{
+     position:absolute;
+    left:90%;
+    /* bottom:0; */
+}
+.my_round{width:30rpx;height:30rpx;line-height:30rpx;border-radius:20rpx;background-color:#e4393c;color:#fff;top:-14rpx;right:10rpx;}
+/* 货源按钮 */
+.hy_btn{width:120rpx;height:30rpx;background-color:#000;opacity:0.2;bottom:50rpx;right:20rpx;border-radius:15rpx;}
+.btn { 
+  width: 80%;  
+  padding: 20rpx 0;  
+  border-radius: 10rpx;  
+  text-align: center;  
+  margin: 40rpx 10%;  
+  background: #000;  
+  color: #fff;  
+} 
+   
+/*mask*/ 
+.drawer_screen { 
+  width: 100%;  
+  height: 100%;  
+  position: fixed;  
+  top: 0;  
+  left: 0;  
+  z-index:1000;  
+  background: #000;  
+  opacity: 0.5;  
+  overflow: hidden;  
+} 
+   
+/*content*/ 
+.drawer_box { 
+  width: 700rpx;  
+  overflow: hidden;  
+  position: fixed;  
+  top: 30%;  
+  left: 0;  
+  z-index: 1001;  
+  background: #F2F2F2;  
+  margin: -150px 50rpx 0 25rpx;  
+  border-radius: 3px;  
+  background-color:#f1f1f1;
+} 
+   
+.drawer_title{ 
+  padding:15px;  
+  font: 20px "microsoft yahei";  
+  text-align: center;  
+} 
+.drawer_content { 
+  height: 400px;  
+  overflow-y: scroll; /*超出父盒子高度可滚动*/ 
+} 
+   
+.btn_ok{ 
+  padding: 10px;  
+  font: 20px "microsoft yahei";  
+  text-align: center;  
+  border-top: 1px solid #E8E8EA;  
+  color: #3CC51F;  
+} 
+   
+.top{ 
+    padding-top:8px;  
+} 
+.bottom { 
+    padding-bottom:8px;  
+} 
+
+
+
+
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+.commodity_attr_box {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding-top: 20rpx;
+}
+.vip_scl1{ width: 100%; margin-right:20rpx;border-radius:10rpx; }
+
+
+.gd_sp_pt{ width: 50%; height: 300rpx; display: inline-block;margin-right:20rpx;border-radius:10rpx; }
+
+
+.sub{
+  border:1px solid #ddd;
+  /* padding:0 10rpx; */
+  background-color:#f1f1f1;
+  border-radius:35rpx;
+  padding:5rpx 18rpx;
+}
+.sub2{
+  border:1px solid #ddd;
+  /* padding:0 10rpx; */
+  background-color:#fff;
+  border-radius:35rpx;
+  padding:5rpx 18rpx;
+}
+.add{
+    border:1px solid #ddd;  
+  background-color:#fff;
+  border-radius:35rpx;
+  padding:5rpx 15rpx;
+}
+.num{
+  /* border-top:1px solid #e4393c; */
+  /* border-bottom:1px solid #e4393c; */
+  /* padding:3rpx 20rpx; */
+  /* background-color:#f1f1f1; */
+}
+.all-add {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  }
+
+/* 弹出添加购物车 */
+.maskLayer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+.choose {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding-top: 20rpx;
+}
+.choose3 {
+  width: 100%;
+  height:100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding-top: 20rpx;
+}
+/* 返回顶部按钮 */
+.fliexBox{
+position: fixed;
+right: 0rpx;
+bottom: 85rpx;
+}
+.callOur{
+bottom: 20rpx;
+}
+contact-button{
+opacity: 0;
+position: absolute;
+}
+
+/* 规格 */
+.spec{
+  padding:5rpx 10rpx;
+  border:1px solid #666;
+  border-radius:10rpx;
+}
+.bd-le-f3{
+  border:1px solid #ff3030;
+  color:#ff3030;
+}
+.title{
+  margin-top: 40rpx;
+}
+.characteristics{
+  margin-bottom: 20rpx;
+}
+.characteristics .key{
+  color: #999;
+  margin-right:15rpx; 
+}
+.characteristics .val{
+  color: #fff;
+}
+.texts{
+  margin: 20rpx 0;
+}
+.prompt{
+  margin-top: 20rpx;
+}
+.prompt .key, .prompt .val{
+  color: #fff;
+  margin-top: 15rpx;
+}
+.pay_box{
+  height: 70rpx;
+  border-radius:40rpx; 
+  background-color:#ffa500;
+  width: 60%;
+  margin-top: 15rpx;
+  float: right;
+}
+.pay_box_body{
+  text-align: right !important;
+  padding-right: 40rpx;
+}
+.text_box{
+  background-color:#333;color:#ffa500;width:100%;height:100rpx;
+  padding-left: 40rpx;
+  justify-content: flex-start !important;
+}

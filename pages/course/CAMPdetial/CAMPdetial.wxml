@@ -1,0 +1,204 @@
+<view class="container pd-lr-20" id='header' style='margin-bottom:200rpx;'>
+  <!-- 广告 -->
+  <view style=''>
+    <image src="{{camp.filePath}}" class="slide-image" mode='scaleToFill' style='width:100%;height:300rpx;' />
+  </view>
+  <!-- 教练 -->
+  <view class='pd-20'>
+    <view class='dis_flx flx_dir_row al-c txt-c'>
+      <view class='flx_1 ft-co-ff' style='border-right:1px solid #000;'>近期营期</view>
+      <view class='flx_1 ft-co-a1'>课程简介</view>
+    </view>
+  </view>
+
+  <!-- 课程 -->
+  <view class=' bk-co-30 bd-rs-10 '>
+    <view class='pd-lr-20 bk-co-2a'>
+      <view class='dis_flx flx_dir_row al-c lh-50 ft-co-ff pd-tb-30 bd-bt-le'>
+        <image src='../../../image/sz@2x.png' style='width:33rpx;height:33rpx;'></image>
+        <view class='flx_1 ml-10'>近期营期</view>
+        <view class='flx_1 dis_flx ju-r al-c '>
+          <view class="section">
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{cityArea}}" range-key="areaName">
+              <view class="picker">
+                {{cityArea[index].areaName}}
+              </view>
+            </picker>
+          </view>
+          <image class='ml-10' src='../../../image/xx2@2x.png' style='width:15rpx;height:20rpx;'></image>
+        </view>
+      </view>
+    </view>
+    <view wx:for="{{goods}}">
+      <view class='dis_flx flx_dir_row lh-70 pd-lr-20 ft-sz-24 ft-co-ff bk-co-2a' style='border-radius:10rpx 10rpx 0 0;'>
+        <view>{{item.store.storeName}}</view>
+        <view class=' flx_1 dis_flx ju-r al-c ft-co-a1'>
+          <text class=''>查看地图</text>
+          <image class='ml-10' src='../../../image/xx2@2x.png' style='width:20rpx;height:28rpx;'></image>
+        </view>
+      </view>
+      <view class='bk-co-39'>
+        <view class='mb-20 bk-co-30 pd-lr-20' id='channelSwiper'>
+          <view class=' pd-tb-30' style='' data-id='{{item.coach.id}}'>
+            <view class=' dis_flx flx_dir_row ft-co-ff ' style=''>
+              <view class=' ' style='width:150rpx;' bindtap='jumpjlJob' data-id='{{item.coach.id}}'>
+                <image src="{{item.coach.avatar}}" class="slide-image bd-rs-10" style="width:150rpx;height:150rpx;border-radius:75rpx;" />
+              </view>
+              <view class='pd-lr-20 flx_1 dis_flx al-c' bindtap='chooseSezi' data-index='1' data-id='{{item.id}}'>
+                <view>
+                  <view class=' ft-sz-30  '>{{item.coach.coachName}}</view>
+                  <view class='mt-20 ft-sz-24 ft-co-a1'>
+                    <text>{{item.tag}}</text>
+                  </view>
+                  <view class='mt-20 ft-sz-24 '>
+                    <text class='ft-co-f50'>{{item.trainingTime}}</text>
+                    <text class='ml-10'>￥{{item.price}}</text>
+                    <text class='ml-10'>(会员价￥{{item.vipPrice}})</text>
+                  </view>
+                </view>
+              </view>
+              <view class='txt-r mt-20 dis_flx al-c' style='width:100rpx;' data-title='{{item.courseName}}' bindtap='jumpFatBurn'>
+                <!-- 确认收货 -->
+                <view class='flx_1 dis_flx flx_dir_row ju-r ft-sz-24' style='text-align:right;'>
+                  <view class='pd-lr-10 txt-c'>
+                    <!-- wx:if='{{item.status == 1}}' -->
+                    <text class='np-btn bd-rs-10 bk-co-f50 ft-co-00' style='' bindtap='onPayMoney' data-id='{{idx}}'>预约</text>
+                    <text wx:if='{{item.status == 2}}' class='np-btn bd-rs-10 bd-le ft-co-a1' style='' bindtap='onPayMoney' data-id='{{idx}}'>结束</text>
+                    <text wx:if='{{item.status == 3}}' class='np-btn bd-rs-10 bk-co-f50 ft-co-00' style='' bindtap='onPayMoney' data-id='{{idx}}'>满员</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 课程简介 -->
+  <view class='mt-20 bk-co-30 bd-rs-10 '>
+    <view class='dis_flx flx_dir_row al-c lh-50 ft-co-ff pd-20'>
+      <image src='../../../image/kcjj@2x.png' style='width:33rpx;height:33rpx;'></image>
+      <text class='ml-20'>课程简介</text>
+    </view>
+    <view class='lh-50 ft-co-a1 bk-co-2a  bd-rs-bl-10'>
+      <view class='pd-20'>
+        <view class='ft-co-ff ft-sz-35'>{{camp.campName}}</view>
+        {{camp.introduction}}
+        <view class='pd-tb-30'>
+          <text class='bk-co-30 ft-co-a1 mr-20' wx:for='{{goods[0].tags}}' style='padding:20rpx 40rpx;border-radius:60rpx;'>{{item}}</text>
+        </view>
+        <view class='dis_flx flx_dir_row mt-30'>
+          <image class='flx_1 pr-10' wx:for='{{camp.descPaths}}' src='{{item}}' style='width:100%;height:200rpx;'></image>
+        </view>
+      </view>
+      <!-- 训练课程 -->
+      <view class='mt-30'>
+        <text class='bk-co-21 ft-co-f50' style='padding:20rpx 40rpx;border-radius:0 10rpx 10rpx 0;'>训练课程</text>
+        <view class='pd-20'>{{camp.trainingEffect}}</view>
+      </view>
+      <!-- 适应人群 -->
+      <view class='mt-30'>
+        <text class='bk-co-21 ft-co-f50' style='padding:20rpx 40rpx;border-radius:0 10rpx 10rpx 0;'>适应人群</text>
+        <view class='pd-20'>{{camp.suitableCrowd}}</view>
+      </view>
+      <!-- FAQ -->
+      <view class='mt-30'>
+        <text class='bk-co-21 ft-co-f50' style='padding:20rpx 40rpx;border-radius:0 10rpx 10rpx 0;'>FAQ</text>
+        <view class='pd-20'>{{camp.faq}}</view>
+      </view>
+      <view class='pd-20 dis_flx ju-c'>
+        <image src='../../../image/xxa@2x.png' style='width:52rpx;height:26rpx;'></image>
+      </view>
+    </view>
+  </view>
+  <!-- 注意事项 -->
+  <view class='mt-20 bk-co-30 bd-rs-10 '>
+    <view class='dis_flx flx_dir_row al-c lh-50 ft-co-ff pd-20'>
+      <image src='../../../image/zysxl@2x.png' style='width:33rpx;height:33rpx;'></image>
+      <text class='ml-20'>注意事项</text>
+    </view>
+    <view class='lh-50 ft-co-ff bk-co-2a pd-20 bd-rs-bl-10'>
+      {{camp.precautions}}
+    </view>
+  </view>
+  <!-- 退款规则 -->
+  <view class='mt-20 bk-co-30 bd-rs-10 '>
+    <view class='dis_flx flx_dir_row al-c lh-50 ft-co-ff pd-20'>
+      <image src='../../../image/tkgz@2x.png' style='width:33rpx;height:33rpx;'></image>
+      <text class='ml-20'>退款规则</text>
+    </view>
+    <view class='lh-50 ft-co-ff bk-co-2a pd-20 bd-rs-bl-10'>
+      单科杰：开课前6小时内退款收取手续费1%，6小时后不支持退款
+    </view>
+  </view>
+  <!-- 健身步骤 -->
+  <view class='mt-20 bk-co-30 bd-rs-10'>
+    <view class='dis_flx flx_dir_row al-c lh-50 ft-co-ff pd-20'>
+      <image src='../../../image/dz1@2x.png' style='width:33rpx;height:33rpx;'></image>
+      <text class='ml-20'>健身步骤</text>
+    </view>
+    <view class='lh-50 ft-co-ff bk-co-2a pd-20 bd-rs-bl-10'>
+      <view class='pd-lr-50 lh-80 mt-30'>
+        <view class='bk-co-66 txt-c ft-sz-35 bd-rs-10' style='width:100%;height:80rpx;'>
+          <text class='ft-co-f50 '>STEP 1</text>
+          <text class='ml-20'>购买课程</text>
+        </view>
+        <view class='pd-30 dis_flx ju-c'>
+          <image src='../../../image/xxa@2x.png' style='width:52rpx;height:26rpx;'></image>
+        </view>
+      </view>
+      <view class='pd-lr-50 lh-80 '>
+        <view class='bk-co-66 txt-c ft-sz-35 bd-rs-10' style='width:100%;height:80rpx;'>
+          <text class='ft-co-f50 '>STEP 2</text>
+          <text class='ml-20'>到店扫码签到</text>
+        </view>
+        <view class='pd-30 dis_flx ju-c'>
+          <image src='../../../image/xxa@2x.png' style='width:52rpx;height:26rpx;'></image>
+        </view>
+      </view>
+      <view class='pd-lr-50 lh-80 '>
+        <view class='bk-co-66 txt-c ft-sz-35 bd-rs-10' style='width:100%;height:80rpx;'>
+          <text class='ft-co-f50 '>STEP 3</text>
+          <text class='ml-20'>签到成功入场</text>
+        </view>
+        <view class='pd-30 dis_flx ju-c'>
+          <image src='../../../image/xxa@2x.png' style='width:52rpx;height:26rpx;'></image>
+        </view>
+      </view>
+      <view class='pd-lr-50 lh-80 '>
+        <view class='bk-co-66 txt-c ft-sz-35 bd-rs-10' style='width:100%;height:80rpx;'>
+          <text class='ft-co-f50 '>STEP 4</text>
+          <text class='ml-20'>销课</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='lh-100 bk-co-f50 txt-c' bindtap='jumpOrderIn' style='position:fixed;bottom:0;left:0;width:100%;height:100rpx;'>立即购课</view>
+
+<!-- 默认排行 -->
+<view class='maskLayer' wx:if="{{chooseSize1}}" bindtap='hideModal' catchtouchmove='true' data-index='1'></view>
+<!-- 弹出说明 -->
+<view class='dis_flx ju-c ps-ralv choose1 pb-50' wx:if="{{chooseSize1}}" catchtouchmove='true'>
+  <view class='bk-co-ff ft-sz-24' style='width:650rpx;height:610rpx;'  >
+    <view class='pd-20 bd-bt-le txt-c '>
+      <view>{{campCourse.courseName}}</view>
+      <view>剩余 <text></text> 截止报名</view>
+    </view>
+    <view class='pd-20 bd-bt-le'>
+      <view>本期课程安排:</view>
+      <view class='ft-co-a1 mt-20'>{{campCourse.courseContent}}</view>
+    </view>
+    <view class='pd-20'>
+      <view>教练介绍:</view>
+      <view class='dis_flx mt-20'>
+        <image src='{{campCourse.coach.avatar}}' style='width:120rpx;height:120rpx;border-radius:60rpx;'></image>
+        <view class='ml-20 ft-co-a1'>{{campCourse.coach.introduction}}</view>
+      </view>
+    </view>
+    <view class='pd-20' bindtap='hideModal' data-index='1'>
+      <view class='txt-c' style='width:100%;height:80rpx;line-height:80rpx;border:1px solid #000;'>关闭</view>
+    </view>
+  </view>
+</view>

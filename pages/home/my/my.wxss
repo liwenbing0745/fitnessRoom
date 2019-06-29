@@ -1,0 +1,12 @@
+
+/**index.wxss**/
+page{height:100%;color:#333;}
+.container{padding-bottom:100rpx;}
+.bd-bt-le{border-bottom:1px solid #212121;}
+.userinfo-avatar {  
+  overflow:hidden;  
+  display: block;  
+  width: 130rpx;  
+  height: 130rpx;   
+  border-radius: 50%;  
+}

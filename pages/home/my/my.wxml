@@ -1,0 +1,62 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='ps-ralv ' style='width:100%;'>
+    <view class='pd-20 ft-co-ff'>
+      <view class='dis_flx ju-c'>
+        <image src='../../../image/z7@2x.png' style='width:534rpx;height:495rpx;'></image>
+      </view>
+      <view class='ps-abso' style='width:100%;top:156rpx;left:0;'>
+        <view class='dis_flx ju-c'>
+          <!-- <image src='../../../image/phote.png' style='width:130rpx;height:130rpx;'></image> -->
+          <view class="userinfo-avatar">
+            <open-data type="userAvatarUrl" style='width:130rpx;height:130rpx;border-radius:65rpx;'></open-data>
+          </view>
+        </view>
+        <view class='txt-c mt-30'><open-data type="userNickName" lang="zh_CN"></open-data></view>
+        <view class='dis_flx  ju-c ft-sz-26 mt-50' bindtap='jumpPerson'>
+          <view class='dis_flx flx_dir_row al-c ju-c lh-50 bd-le' style='width:200rpx;height:50rpx;border-radius:30rpx;'>个人资料
+            <image class='ml-20' src='../../../image/xxx@2x.png' style='width:15rpx;height:22rpx;'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+
+  <view class='pd-lr-20 mt-30'>
+    <view class='pl-20 lh-110 ft-sz-28 ft-co-ff  bk-co-30  bd-rs-10' style=''>
+      <navigator url='../../catering/tel/tel' class='bd-bt-le'>
+        <view class='dis_flx flx_dir_row al-c '>
+          <image src='../../../image/sj@2x.png' style='width:25rpx;height:30rpx;'></image>
+          <view class='flx_1 txt-l ft-wt ml-20'>手机号码</view>
+          <view class='flx_1 pr-20 dis_flx al-c ju-r'>
+            <view class='mr-20 ft-co-f50' wx:if="{{bindStatus}}">已绑定</view>
+            <view class='mr-20 ft-co-a1' wx:else>未绑定</view>
+            <image src='../../../image/xx2@2x.png' style='width:15rpx;height:25rpx;'></image>
+          </view>
+        </view>
+      </navigator>
+      <block wx:for='{{other}}'>
+        <navigator url='{{item.url}}' class='bd-bt-le'>
+          <view class='dis_flx flx_dir_row al-c '>
+            <image src='{{item.img}}' style='width:25rpx;height:30rpx;'></image>
+            <view class='flx_1 txt-l ft-wt ml-20'>{{item.pro}}</view>
+            <view class='txt-r pr-20'>
+              <image src='../../../image/xx2@2x.png' style='width:15rpx;height:25rpx;'></image>
+            </view>
+          </view>
+        </navigator>
+      </block>
+      <view class='dis_flx flx_dir_row al-c '>
+        <image src='../../../image/kf@2x.png' style='width:25rpx;height:30rpx;'></image>
+        <view class=' txt-l ft-wt ml-20'>联系客服</view>
+        <view class='flx_1 pr-20 dis_flx al-c ju-r' bindtap='callPhone'>
+          <view class='mr-20 ft-co-f50'>15929318387</view>
+          <image src='../../../image/xx2@2x.png' style='width:15rpx;height:25rpx;'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

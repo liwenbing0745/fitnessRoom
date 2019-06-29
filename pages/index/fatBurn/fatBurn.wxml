@@ -1,0 +1,175 @@
+<view class="container pd-lr-20" id='header' style='margin-bottom:200rpx;'>
+  <!-- 广告 -->
+ <!--  <view style=''>
+    <image src="../../../image/tc2@2x.png" class="slide-image" mode='scaleToFill' style='width:100%;height:300rpx;' />
+  </view> -->
+  <view class=" " style='' animation='{{animation}}'>
+    <swiper circular='{{circular}}' duration='{{duration}}' autoplay="{{autoplay}}" interval="{{interval}}" style='height:240rpx;'>
+      <block wx:for="{{imageUrl}}" >
+        <swiper-item class=''>
+          <!-- <navigator url='{{item.url}}' hover-class='none'> -->
+          <image  src="{{item}}" class="slide-image bk-img " style='width:100%;height:240rpx;' lazy-load='true'/>
+          <!-- </navigator> -->
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 教练 -->
+  <view class='mt-20 bk-co-30 bd-rs-10 pd-20'>
+    <view class='dis_flx flx_dir_row al-c'>
+      <view class='flx_1 lh-50 pr-20'>
+        <view class='ft-sz-35 ft-co-ff'>{{coachInfo.coachName}}</view>
+        <view class='ft-co-a1 ft-sz-26'>{{coachInfo.introduction}}</view>
+      </view>
+      <image src='{{coachInfo.avatar}}' style='width:120rpx;height:120rpx;border-radius: 50%;'></image>
+    </view>
+  </view>
+
+  <!-- 课程 -->
+  <view class='mt-20 bk-co-30 bd-rs-10 pd-lr-20' wx:if='{{keId == 1}}'>
+    <view class='dis_flx flx_dir_row al-c lh-50 ft-co-ff pd-tb-30 bd-bt-le'>
+      <image src='../../../image/sz@2x.png' style='width:33rpx;height:33rpx;'></image>
+      <text class='ml-20'>时间： <text>与教练预售可时间</text></text>
+    </view>
+    <view class='dis_flx flx_dir_row  lh-40 ft-co-ff pd-tb-30 bd-bt-le'>
+      <image src='../../../image/dz1@2x.png' style='width:40rpx;height:33rpx;'></image>
+      <view class='ml-20'>
+        <view class='dis_flx al-c'>门店：<text>龙跃天悦莎莎和店面</text></view>
+      </view>
+    </view>
+    <view class='dis_flx flx_dir_row  lh-50 ft-co-ff pd-tb-30 '>
+      <image class='mt-10' src='../../../image/sz@2x.png' style='width:33rpx;height:33rpx;'></image>
+      <view class='ml-20'>
+        <view class='dis_flx al-c'>1课时：<text style='text-decoration:line-through'>￥450/课时</text> <text class='ft-co-f50 ml-10'>(首次体验课￥220/课时)</text></view>
+        <view class='dis_flx al-c'>6课时：<text style='text-decoration:line-through'>￥380/课时</text></view>
+        <view class='dis_flx al-c'>39课时：<text style='text-decoration:line-through'>￥350/课时</text></view>
+      </view>
+    </view>
+  </view>
+  <view wx:else class='mt-20 bk-co-30 bd-rs-10 pd-lr-20'>
+    <view class='dis_flx flx_dir_row al-c lh-50 ft-co-ff pd-tb-30 bd-bt-le'>
+      <image src='../../../image/sz@2x.png' style='width:33rpx;height:33rpx;'></image>
+      <text class='ml-20'>时间： <text>{{course.updateTime}}</text></text>
+    </view>
+    <view class='dis_flx flx_dir_row  lh-40 ft-co-ff pd-tb-30 bd-bt-le'>
+      <image src='../../../image/dz1@2x.png' style='width:40rpx;height:33rpx;'></image>
+      <view class='ml-20'>
+        <view class='dis_flx al-c'>{{course.storeName}}
+        </view>
+        <view  class='mt-20'>
+          <text>{{store.address}}</text>
+          <text class='ft-co-f50' style='text-decoration:underline' bindtap="position">查看地图</text>
+        </view>
+      </view>
+    </view>
+    <view class='dis_flx flx_dir_row al-c lh-50 ft-co-ff pd-tb-30 '>
+      <image src='../../../image/sz@2x.png' style='width:33rpx;height:33rpx;'></image>
+      <text class='ml-20'>会员价 ￥{{course.memberPrice}}</text>
+    </view>
+  </view>
+
+  <!-- 课程简介 -->
+  <view class='mt-20 bk-co-30 bd-rs-10 '>
+    <view class='dis_flx flx_dir_row al-c lh-50 ft-co-ff pd-20'>
+      <image src='../../../image/kcjj@2x.png' style='width:33rpx;height:33rpx;'></image>
+      <text class='ml-20'>课程简介</text>
+    </view>
+    <view class='lh-50 ft-co-a1 bk-co-2a  bd-rs-bl-10'>
+      <!-- <view class='pd-20'>
+        <view class='ft-co-ff ft-sz-35'>BELL WAVA 急速燃脂</view>
+        娱乐城有健身地俱乐部、桑拿店、总营业额面积逾2400平方米。
+        <view class='pd-tb-30'>
+          <text class='bk-co-30 ft-co-a1 mr-20' style='padding:20rpx 40rpx;border-radius:60rpx;'>心肺训练</text>
+          <text class='bk-co-30 ft-co-a1 mr-20' style='padding:20rpx 40rpx;border-radius:60rpx;'>心肺训练</text>
+          <text class='bk-co-30 ft-co-a1 mr-20' style='padding:20rpx 40rpx;border-radius:60rpx;'>心肺训练</text>
+        </view>
+        <view class='dis_flx flx_dir_row mt-30'>
+          <image class='flx_1 pr-10' src='../../../image/tc2@2x.png' style='width:100%;height:200rpx;'></image>
+          <image class='flx_1 pl-10' src='../../../image/tc2@2x.png' style='width:100%;height:200rpx;'></image>
+        </view>
+      </view> -->
+      <!-- 训练课程 -->
+     <!--  <view class='mt-30'>
+        <text class='bk-co-21 ft-co-f50' style='padding:20rpx 40rpx;border-radius:0 10rpx 10rpx 0;'>训练课程</text>
+        <view class='pd-20'>娱乐城有健身地俱乐部、桑拿店、总营业额面积逾2400平方米。乒乓点俱乐部执</view>
+      </view> -->
+      <!-- 适应人群 -->
+     <!--  <view class='mt-30'>
+        <text class='bk-co-21 ft-co-f50' style='padding:20rpx 40rpx;border-radius:0 10rpx 10rpx 0;'>适应人群</text>
+        <view class='pd-20'>娱乐城有健身地俱乐部、桑拿店、总营业额面积逾2400平方米。乒乓点俱乐部执</view>
+      </view> -->
+      <!-- FAQ -->
+     <!--  <view class='mt-30'>
+        <text class='bk-co-21 ft-co-f50' style='padding:20rpx 40rpx;border-radius:0 10rpx 10rpx 0;'>FAQ</text>
+        <view class='pd-20'>娱乐城有健身地俱乐部、桑拿店、总营业额面积逾2400平方米。乒乓点俱乐部执</view>
+      </view> -->
+      <!-- <view class='pd-20 dis_flx ju-c'>
+        <image src='../../../image/xxa@2x.png' style='width:52rpx;height:26rpx;'></image>
+      </view> -->
+      <rich-text nodes="{{course.description}}"></rich-text>
+    </view>
+  </view>
+  <!-- 注意事项 -->
+  <view class='mt-20 bk-co-30 bd-rs-10 '>
+    <view class='dis_flx flx_dir_row al-c lh-50 ft-co-ff pd-20'>
+      <image src='../../../image/zysxl@2x.png' style='width:33rpx;height:33rpx;'></image>
+      <text class='ml-20'>注意事项</text>
+    </view>
+    <view class='lh-50 ft-co-ff bk-co-2a pd-20 bd-rs-bl-10'>
+      <rich-text nodes="{{course.precautions}}"></rich-text>
+    </view>
+  </view>
+  <!-- 退款规则 -->
+  <view class='mt-20 bk-co-30 bd-rs-10 '>
+    <view class='dis_flx flx_dir_row al-c lh-50 ft-co-ff pd-20'>
+      <image src='../../../image/tkgz@2x.png' style='width:33rpx;height:33rpx;'></image>
+      <text class='ml-20'>退款规则</text>
+    </view>
+    <view class='lh-50 ft-co-ff bk-co-2a pd-20 bd-rs-bl-10'>
+      单科杰：开课前6小时内退款收取手续费1%，6小时后不支持退款
+    </view>
+  </view>
+  <!-- 健身步骤 -->
+  <view class='mt-20 bk-co-30 bd-rs-10'>
+    <view class='dis_flx flx_dir_row al-c lh-50 ft-co-ff pd-20'>
+      <image src='../../../image/dz1@2x.png' style='width:33rpx;height:33rpx;'></image>
+      <text class='ml-20'>健身步骤</text>
+    </view>
+    <view class='lh-50 ft-co-ff bk-co-2a pd-20 bd-rs-bl-10'>
+      <view class='pd-lr-50 lh-80 mt-30'>
+        <view class='bk-co-66 txt-c ft-sz-35 bd-rs-10' style='width:100%;height:80rpx;'>
+          <text class='ft-co-f50 '>STEP 1</text>
+          <text class='ml-20'>购买课程</text>
+        </view>
+        <view class='pd-30 dis_flx ju-c'>
+          <image src='../../../image/xxa@2x.png' style='width:52rpx;height:26rpx;'></image>
+        </view>
+      </view>
+      <view class='pd-lr-50 lh-80 '>
+        <view class='bk-co-66 txt-c ft-sz-35 bd-rs-10' style='width:100%;height:80rpx;'>
+          <text class='ft-co-f50 '>STEP 2</text>
+          <text class='ml-20'>到店扫码签到</text>
+        </view>
+        <view class='pd-30 dis_flx ju-c'>
+          <image src='../../../image/xxa@2x.png' style='width:52rpx;height:26rpx;'></image>
+        </view>
+      </view>
+      <view class='pd-lr-50 lh-80 '>
+        <view class='bk-co-66 txt-c ft-sz-35 bd-rs-10' style='width:100%;height:80rpx;'>
+          <text class='ft-co-f50 '>STEP 3</text>
+          <text class='ml-20'>签到成功入场</text>
+        </view>
+        <view class='pd-30 dis_flx ju-c'>
+          <image src='../../../image/xxa@2x.png' style='width:52rpx;height:26rpx;'></image>
+        </view>
+      </view>
+      <view class='pd-lr-50 lh-80 '>
+        <view class='bk-co-66 txt-c ft-sz-35 bd-rs-10' style='width:100%;height:80rpx;'>
+          <text class='ft-co-f50 '>STEP 4</text>
+          <text class='ml-20'>销课</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='lh-100 bk-co-f50 txt-c' bindtap='jumpOrderIn' style='position:fixed;bottom:0;left:0;width:100%;height:100rpx;'>立即购课</view>

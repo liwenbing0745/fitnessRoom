@@ -1,0 +1,13 @@
+<!--pages/my/statement/statement.wxml-->
+<view class='pd-lr-20'>
+  <view class='pd-tb-20 bd-bt-le dis_flx' wx:for='{{data}}'>
+    <view class='flx_1 mt-10'>
+      <view class='ft-sz-28 ft-co-ff'>课程消费</view>
+      <view class='ft-sz-24 ft-co-a1 mt-20'>2019-04-02 21:47:22</view>
+    </view>
+    <view class='flx_1  txt-r pr-20'>
+      <view class='ft-co-f79'><text class='ft-sz-20'>+</text><text class='ft-sz-28'>3元</text></view>
+      <view class='ft-sz-24 ft-co-a1 mt-20'>余额支付</view>
+    </view>
+  </view>
+</view>

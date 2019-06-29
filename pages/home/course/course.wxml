@@ -1,0 +1,166 @@
+<!--pages/home/course/course.wxml-->
+<view class='pd-lr-20'>
+  <!-- 筛选 -->
+  <view class='dis_flx flx_dir_row al-c txt-c ft-co-ff bd-bt-le pd-tb-30'>
+    <view class='flx_1 dis_flx ju-c al-c' bindtap='chooseSezi' data-index='1' style='border-right:1px solid #000;'>
+      <block wx:if="{{defautCity!=null}}">{{defautCity}}</block>
+      <block wx:for='{{city}}' wx:if="{{defautCity==null}}">
+        <text wx:if='{{currentTab == index}}'>{{item.areaName}}</text>
+      </block>
+      <image class='ml-20' src='../../../image/xxa@2x.png' style='width:26rpx;height:14rpx;'></image>
+    </view>
+    <view class='flx_1 dis_flx ju-c al-c' bindtap='chooseSezi' data-index='2' style='border-right:1px solid #000;'>
+      筛选课程
+      <image class='ml-20' src='../../../image/xxa@2x.png' style='width:26rpx;height:14rpx;'></image>
+    </view>
+    <view class='flx_1 dis_flx ju-c al-c' bindtap='chooseSezi' data-index='3'>
+      全部时段
+      <image class='ml-20' src='../../../image/xxa@2x.png' style='width:26rpx;height:14rpx;'></image>
+    </view>
+  </view>
+ 
+  <!-- 时间 -->
+  <view class='pd-tb-20 dis_flx al-c txt-c ft-co-a1 ft-sz-24'>
+    <view class='flx_1 ' wx:for='{{date}}' data-index='{{index}}' bindtap='swiTab'>
+      <view wx:if='{{currTab==index}}' class='dis_flx al-c ju-c date_btn' style=''>
+        <view>
+          <view>{{item.week}}</view>
+          <view>{{item.time}}</view>
+        </view>
+      </view>
+      <view wx:else>{{item.week[1]}}</view>
+    </view>
+    <navigator url='../../course/sijiao/sijiao' class='flx_1'>
+      私教
+    </navigator>
+    <navigator url='../../course/CAMP/CAMP' class='flx_1'>
+      CAMP
+    </navigator>
+  </view>
+
+  <!-- 内容 -->
+  <!-- 内容 -->
+  <view class='  bd-rs-10 mt-20 '>
+    <view class='dis_flx flx_dir_row lh-70 pd-lr-20 ft-sz-24 ft-co-ff bk-co-2a' style='border-radius:10rpx 10rpx 0 0;'>
+      <view>{{goods[0].storeName}}</view>
+      <!-- <view class=' flx_1 dis_flx ju-r al-c ft-co-a1'>
+        <text class=''>查看地图</text>
+        <image class='ml-10' src='../../../image/xx2@2x.png' style='width:20rpx;height:28rpx;'></image>
+      </view> -->
+    </view>
+    <view class='bk-co-39'>
+      <view class='mb-20 bk-co-30 pd-lr-20' wx:for="{{goods}}" id='channelSwiper'>
+        <view class=' pd-tb-30' style='' data-id='{{item.productid}}'>
+          <view class=' dis_flx flx_dir_row ft-co-ff ' style=''>
+            <view class=' ' style='width:120rpx;' bindtap='jumpjlJob'>
+              <image src="{{item.avatar}}" class="slide-image bd-rs-10" style="width:120rpx;height:120rpx;border-radius:75rpx;" />
+            </view>
+            <view class='pd-lr-20 flx_1 dis_flx al-c' bindtap='jumpFatBurn' data-courseid = "{{item.courseId}}" data-title='{{item.courseName}}'>
+              <view>
+                <view class=' ft-sz-30  '>{{item.courseName}}</view>
+                <view class='mt-20 ft-sz-24 ft-co-a1'>
+                  <text>{{item.tag}}</text>
+                </view>
+                <view class='mt-20 ft-sz-24 '>
+                  <text class='ft-co-f50'>{{item.startTime}}-{{item.endTime}}</text>
+                  <text class='ml-10'>￥{{item.price}}</text>
+                  <text class='ml-10'>(会员价￥{{item.vipPrice}})</text>
+                </view>
+              </view>
+            </view>
+            <view class='txt-r mt-20 dis_flx al-c' style='width:100rpx;' data-title='{{item.courseName}}' data-courseid = "{{item.courseId}}" bindtap='jumpFatBurn'>
+              <!-- 确认收货 -->
+              <view class='flx_1 dis_flx flx_dir_row ju-r ft-sz-24' style='text-align:right;'>
+                <view class='pd-lr-10 txt-c'>
+                  <!-- wx:if='{{item.status == 1}}' -->
+                  <text class='np-btn bd-rs-10 bk-co-f50 ft-co-00' style='' bindtap='onPayMoney' data-id='{{idx}}'>预约</text>
+                  <text wx:if='{{item.status == 2}}' class='np-btn bd-rs-10 bd-le ft-co-a1' style='' bindtap='onPayMoney' data-id='{{idx}}'>结束</text>
+                  <text wx:if='{{item.status == 3}}' class='np-btn bd-rs-10 bk-co-f50 ft-co-00' style='' bindtap='onPayMoney' data-id='{{idx}}'>满员</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 广州全城 -->
+<view class='maskLayer' wx:if="{{chooseSize1}}" bindtap='hideModal' catchtouchmove='true' data-index='1'></view>
+<!-- 弹出说明 -->
+<view>
+  <!-- 市 -->
+  <view style='width:200rpx;height:100%;' class='ps-ralv choose1 pb-50 bk-co-30' wx:if="{{chooseSize1}}" catchtouchmove='true'>
+  <scroll-view scroll-y style="height:100%;">
+    <view class='lh-100 txt-c  ft-co-a1 ' style=''>
+      <block wx:for='{{city}}'>
+        <view data-current="{{index}}" data-areaid = "{{item.id}}" data-id='{{item.areaCode}}' bindtap="swichNav" wx:key="index" class="txt-c bd-rs-10 {{currentTab==index ? 'ft-co-f50' : ''}}" style='width:100%;height:100rpx;'>{{item.areaName}}</view>
+      </block>
+    </view>
+    </scroll-view>
+  </view>
+  <!-- 区 -->
+  <view style='width:200rpx;height:100%;' class='ps-ralv choose1_1 pb-50 bk-co-41' wx:if="{{areaHd}}" catchtouchmove='true'>
+    <view class='lh-100 txt-c  ft-co-a1 ' style=''>
+      <block wx:for='{{area}}'>
+        <view wx:key="index" class="txt-c bd-rs-10 " style='width:100%;height:100rpx;'>
+          <text class='bd-rs-10' data-current="{{index}}" data-id='{{item.id}}' bindtap="swichNav1" wx:key="index" class="txt-c bd-rs-10 {{currentTab1==index ? 'ft-co-f50' : ''}}" style='padding:10rpx 30rpx;'>{{item.areaName}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 门店 -->
+  <view style='width:250rpx;height:100%;' class='ps-ralv choose1_2 pb-50 bk-co-30' wx:if="{{areaHd}}" catchtouchmove='true'>
+    <view class='lh-100 txt-c  ft-co-a1 ' style=''>
+      <scroll-view scroll-y style="height: {{imageHeight-40}}px;">
+        <block wx:for='{{storeSubject}}'>
+          <view wx:key="index" class="txt-c bd-rs-10 " style='width:100%;height:100rpx;'>
+            <text class='bd-rs-10' data-current="{{index}}" data-id='{{item.id}}' bindtap="swichNav2" wx:key="index" class="txt-c bd-rs-10 {{item.selected==1 ? 'bk-co-f50 ft-co-00' : ''}}" style='padding:10rpx 30rpx;'>{{item.storeName}}</text>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+  <view style='width:650rpx;height:80rpx;line-height:80rpx;' class='ps-ralv choose1_3 bk-co-f50   txt-c' wx:if="{{areaHd}}" bindtap='allSelectBtn' catchtouchmove='true'>确定</view>
+</view>
+<!-- 筛选课程 -->
+<view class='maskLayer' wx:if="{{chooseSize2}}" bindtap='hideModal' catchtouchmove='true' data-index='2'></view>
+<!-- 弹出说明 -->
+<view>
+  <view style='width:200rpx;height:100%;' class='ps-ralv choose3 pb-50' wx:if="{{chooseSize2}}" catchtouchmove='true'>
+    <view class='lh-100 txt-c bk-co-30 ft-co-a1' style='width:100%;height:100rpx;'>类型</view>
+    <view class='pd-lr-20 '>
+      <view wx:for='{{kecheng}}' data-current="{{index}}" data-id='{{item.id}}' class="lh-80 ft-co-00  txt-c bd-rs-10 mt-50  {{item.selected==1 ? 'bk-co-f50' : 'bd-le ft-co-a1'}}" bindtap='shTabKecheng' style='width:100%;height:80rpx;'>{{item.tagName}}</view>
+    </view>
+  </view>
+  <view style='width:300rpx;height:100%;' class='ps-ralv choose3_2 pb-50 bk-co-30' wx:if="{{chooseSize2}}" catchtouchmove='true'>
+    <view class='lh-100 txt-c  ft-co-a1 ' style=''>
+
+      <view wx:key="index" class="txt-c bd-rs-10 " style='width:100%;height:100rpx;'>
+        <text wx:key="index" class="txt-c bd-rs-10  bk-co-f50 ft-co-00" style='padding:10rpx 100rpx;'>全部</text>
+      </view>
+      <scroll-view scroll-y style="height: {{imageHeight-90}}px;">
+        <block wx:for='{{kecheng2}}'>
+          <view wx:key="index" class="txt-c bd-rs-10 mt-50" style='width:100%;height:100rpx;'>
+            <text class='bd-rs-10' data-current="{{index}}" data-id='{{item.id}}' bindtap="swTabKeAll" wx:key="index" class="txt-c bd-rs-10 {{item.selected==1 ? 'bk-co-f50 ft-co-00' : ''}}" style='padding:10rpx 30rpx;'>{{item.courseName}}</text>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+  <view wx:if="{{chooseSize2}}" class=' choose1_4 dis_flx'>
+    <view style='height:80rpx;line-height:80rpx;width:200rpx;' class=' bk-co-00 ft-co-ff   txt-c' bindtap='clearBtn' catchtouchmove='true'>清空</view>
+    <view style=';height:80rpx;line-height:80rpx;width:300rpx;' class='flx_1 bk-co-f50   txt-c' bindtap='kechengBtn' catchtouchmove='true'>确定</view>
+  </view>
+</view>
+<!-- 全部时段 -->
+<view class='maskLayer' wx:if="{{chooseSize3}}" bindtap='hideModal' catchtouchmove='true' data-index='3'></view>
+<!-- 弹出说明 -->
+<view style='width:376rpx;height:100%;' class='ps-ralv choose3 pb-50' wx:if="{{chooseSize3}}" catchtouchmove='true'>
+  <view class='lh-100 txt-c bk-co-30 ft-co-a1' style='width:100%;height:100rpx;'>选择时段</view>
+  <view class='pd-lr-20 '>
+    <view wx:for='{{timeList}}' data-current="{{index}}" data-id='{{item.id}}' bindtap="swichTabTime" class="lh-80 ft-co-00  txt-c bd-rs-10 mt-50  {{item.selected==1 ? 'bk-co-f50' : 'bd-le ft-co-a1'}}" style='width:100%;height:80rpx;'>{{item.title}}</view>
+  </view>
+  <view style='width:376rpx;height:80rpx;line-height:80rpx;' class='ps-ralv choose1_4 bk-co-f50   txt-c' bindtap='requestTimeBtn' catchtouchmove='true'>确定</view>
+</view>

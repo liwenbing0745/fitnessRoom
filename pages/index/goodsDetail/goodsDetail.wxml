@@ -1,0 +1,117 @@
+<view class="container pd-lr-20" id='header' style='margin-bottom:200rpx;'>
+  <!-- 广告 -->
+  <view style=''>
+    <image src="{{store.filePath}}" class="slide-image" mode='scaleToFill' style='width:100%;height:300rpx;' />
+  </view>
+  <!-- 课程 -->
+  <view class='mt-20 bk-co-30 bd-rs-10 pd-20'>
+    <view bindtap='jumpOrderIn' class='dis_flx flx_dir_row al-c'>
+      <view class='flx_1 lh-50'>
+        <view class='ft-sz-35 ft-co-ff'>课程</view>
+        <view class='ft-co-a1 ft-sz-26'>按此预约，满足燃脂，肌肉等需求的多样团队</view>
+      </view>
+      <view class='lh-60 bk-co-f50 bd-rs-10 txt-c' style='width:100rpx;height:60rpx;'>约课</view>
+    </view>
+  </view>
+  <!-- 私教 -->
+  <view class='mt-20 bk-co-30 bd-rs-10 pd-20'>
+    <navigator url='../../course/sijiao/sijiao' class='dis_flx flx_dir_row al-c'>
+      <view class='flx_1 lh-50'>
+        <view class='ft-sz-35 ft-co-ff'>私教</view>
+        <view class='ft-co-a1 ft-sz-26'>按此预约，满足燃脂，肌肉等需求的多样</view>
+      </view>
+      <view class='lh-60 bk-co-f50 bd-rs-10 txt-c' style='width:100rpx;height:60rpx;'>查看</view>
+    </navigator>
+  </view>
+  <!-- CAMP -->
+  <view class='mt-20 bk-co-30 bd-rs-10 pd-20'>
+    <navigator url='../../course/CAMP/CAMP'  class='dis_flx flx_dir_row al-c'>
+      <view class='flx_1 lh-50'>
+        <view class='ft-sz-35 ft-co-ff'>CAMP</view>
+        <view class='ft-co-a1 ft-sz-26'>按此预约，满足燃脂，肌肉等需求的多样</view>
+      </view>
+      <view class='lh-60 bk-co-f50 bd-rs-10 txt-c' style='width:100rpx;height:60rpx;'>查看</view>
+    </navigator>
+  </view>
+
+  <!-- 场地介绍 -->
+  <view class='mt-20 bk-co-30 bd-rs-10 '>
+    <view class='dis_flx flx_dir_row al-c lh-50 ft-co-ff pd-20'>
+      <image src='../../../image/dp@2x.png' style='width:33rpx;height:33rpx;'></image>
+      <text class='ml-20'>场地介绍</text>
+    </view>
+    <view class='lh-50 ft-co-ff bk-co-2a pd-20 bd-rs-bl-10'>
+      <rich-text nodes="{{store.storeIntroduction}}"></rich-text>
+    </view>
+  </view>
+
+  <!-- 地址 -->
+  <view class='mt-20 bk-co-30 bd-rs-10 '>
+    <view class='dis_flx flx_dir_row al-c lh-50 ft-co-ff pd-20'>
+      <image src='../../../image/dz1@2x.png' style='width:33rpx;height:33rpx;'></image>
+      <text class='ml-20'>地址</text>
+    </view>
+    <view class='lh-50 ft-co-ff bk-co-2a pd-20 bd-rs-bl-10'>
+      <rich-text nodes = "{{store.address}}"></rich-text>
+      <text class='ft-co-f50' bindtap='openMap'>查看地图</text>
+    </view>
+  </view>
+  <!-- 注意事项 -->
+  <view class='mt-20 bk-co-30 bd-rs-10 '>
+    <view class='dis_flx flx_dir_row al-c lh-50 ft-co-ff pd-20'>
+      <image src='../../../image/zysxl@2x.png' style='width:33rpx;height:33rpx;'></image>
+      <text class='ml-20'>注意事项</text>
+    </view>
+    <view class='lh-50 ft-co-ff bk-co-2a pd-20 bd-rs-bl-10'>
+      <rich-text nodes="{{store.precautions}}"></rich-text>
+    </view>
+  </view>
+  <!-- 健身步骤 -->
+  <view class='mt-20 bk-co-30 bd-rs-10'>
+    <view class='dis_flx flx_dir_row al-c lh-50 ft-co-ff pd-20'>
+      <image src='../../../image/dz1@2x.png' style='width:33rpx;height:33rpx;'></image>
+      <text class='ml-20'>健身步骤</text>
+    </view>
+    <view class='lh-50 ft-co-ff bk-co-2a pd-20 bd-rs-bl-10'>
+      <view class='pd-lr-50 lh-80 mt-30'>
+        <view class='bk-co-66 txt-c ft-sz-35 bd-rs-10' style='width:100%;height:80rpx;'>
+          <text class='ft-co-f50 '>STEP 1</text>
+          <text class='ml-20'>购买课程</text>
+        </view>
+        <view class='pd-30 dis_flx ju-c'>
+          <image src='../../../image/xxa@2x.png' style='width:52rpx;height:26rpx;'></image>
+        </view>
+      </view>
+      <view class='pd-lr-50 lh-80 '>
+        <view class='bk-co-66 txt-c ft-sz-35 bd-rs-10' style='width:100%;height:80rpx;'>
+          <text class='ft-co-f50 '>STEP 2</text>
+          <text class='ml-20'>到店扫码签到</text>
+        </view>
+        <view class='pd-30 dis_flx ju-c'>
+          <image src='../../../image/xxa@2x.png' style='width:52rpx;height:26rpx;'></image>
+        </view>
+      </view>
+      <view class='pd-lr-50 lh-80 '>
+        <view class='bk-co-66 txt-c ft-sz-35 bd-rs-10' style='width:100%;height:80rpx;'>
+          <text class='ft-co-f50 '>STEP 3</text>
+          <text class='ml-20'>签到成功入场</text>
+        </view>
+        <view class='pd-30 dis_flx ju-c'>
+          <image src='../../../image/xxa@2x.png' style='width:52rpx;height:26rpx;'></image>
+        </view>
+      </view>
+      <view class='pd-lr-50 lh-80 '>
+        <view class='bk-co-66 txt-c ft-sz-35 bd-rs-10' style='width:100%;height:80rpx;'>
+          <text class='ft-co-f50 '>STEP 4</text>
+          <text class='ml-20'>销课</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='lh-100 bk-co-f50 txt-c' style='position:fixed;bottom:0;left:0;width:100%;height:100rpx;' bindtap='jumpOrderIn'>约课</view>
+
+
+
+
+

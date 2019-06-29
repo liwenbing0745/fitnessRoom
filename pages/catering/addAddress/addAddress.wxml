@@ -1,0 +1,157 @@
+ <!--index.wxml-->
+<view class="container ">
+  <view class=''>
+    <!-- 收货地址 -->
+    <form class='' bindsubmit="formSubmit" wx:if="{{addressId=='add'}}">
+      <view class=' lh-100 mt-20'>
+        <view class='' style='padding:0 30rpx 30rpx 30rpx;'>
+          <!-- 收货人姓名 -->
+          <view class='dis_flx ps-ralv  bd-bt-le al-c'>
+            <view class=' ft-wt ft-co-ff' style='width:200rpx;'>联系人</view>
+            <view class='flx_1 mt-10 ft-co-a1' style='text-align:left;'>
+              <input  placeholder="请输入收货人姓名" name='contact' />
+            </view>
+          </view>
+          <view class='dis_flx ps-ralv  bd-bt-le al-c'>
+            <view class=' ft-wt ft-co-ff' style='width:200rpx;'></view>
+            <view class='flx_1 mt-10 ' style='text-align:left;'>
+              <radio-group class="radio-group dis_flx flx_dir_row al-c" bindchange="radioChange">
+                <label class="radio dis_flx flx_dir_row al-c ft-co-ff mr-50 " wx:for="{{items}}">
+                  <radio class='mr-10' value="{{item.id}}" color='#ffa500' checked="{{item.checked}}" /> {{item.sex}}
+                </label>
+              </radio-group>
+            </view>
+          </view>
+          <!-- 联系方式 -->
+          <view class='dis_flx ps-ralv  bd-bt-le al-c'>
+            <view class=' ft-wt ft-co-ff' style='width:200rpx;'>手机号</view>
+            <view class='flx_1 mt-10  ft-co-a1' style='text-align:left;'>
+              <input  placeholder="请输入收货人手机号码" name='phoneCode' type='number' maxlength='11' />
+            </view>
+          </view>
+          <!-- 省 -->
+          <view class='dis_flx ps-ralv  bd-bt-le'>
+            <view class='ft-wt ft-co-ff' style='width:200rpx;'>收货地址</view>
+            <view class='flx_1 mt-10  dis_flx al-c' style='text-align:left;'>
+              <!-- <view style="">{{areaInfo}}</view> -->
+              <image src='../../../image/dz@2x.png' style='width:38rpx;height:38rpx;'></image>
+              <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+                <view class="picker ft-co-a1 ml-10">{{region[0]}}，{{region[1]}}，{{region[2]}}
+                </view>
+              </picker>
+            </view>
+          </view>
+          <!-- 联系方式 -->
+          <view class='dis_flx ps-ralv  bd-bt-le al-c'>
+            <view class='ft-wt ft-co-ff' style='width:200rpx;'>详细地址</view>
+            <view class='flx_1 mt-10  ft-co-a1' style=    'text-align:left;'>
+              <input  placeholder="例：16号楼5层301室"  name='address' />
+            </view>
+          </view>
+          <!-- 是否设为默认地址 -->
+          <view class='dis_flx ps-ralv  bd-bt-le al-c'>
+            <view class=' ft-wt ft-co-ff' style='width:200rpx;'>设为默认地址</view>
+            <view class='flx_1 mt-10 ' style='text-align:left;'>
+              <radio-group class="radio-group dis_flx flx_dir_row al-c" bindchange="defautAdressChange">
+                <label class="radio dis_flx flx_dir_row al-c ft-co-ff mr-50 " wx:for="{{defautAdress}}">
+                  <radio class='mr-10' value="{{item.id}}" color='#ffa500' checked="{{item.checked}}" /> {{item.isdefaut}}
+                </label>
+              </radio-group>
+            </view>
+          </view>
+           <!-- //是否设为默认地址 -->
+          <view class=' ps-ralv'>
+            <view class='ft-wt ft-co-ff' style='width:200rpx;'>标签</view>
+            <view class='ft-co-ff'>
+              <text class="bd-le mr-20 {{current == index?'bk-co-f50':''}}" data-index='{{index}}' bindtap='switchBtn' wx:for='{{label}}' style='padding:5rpx 50rpx;border-radius:30rpx;'>{{item.label}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 添加收货地址 -->
+      <view class='' style='position:fixed;bottom:0;width:100%;'>
+        <view class='pd-30'>
+          <button formType="submit" class=' txt-c bk-co-f50' style='width:100%;height:100rpx;position:fixed;bottom:0;left:0;border-radius:0;font-size:36rpx;'>保存地址</button>
+        </view>
+      </view>
+
+    </form>
+    
+    <!-- 确认修改请求 -->
+    <form bindsubmit="formSubmitChange" wx:else>
+      <view class=' lh-100 mt-20'>
+        <view class='' style='padding:0 30rpx 30rpx 30rpx;'>
+          <!-- 收货人姓名 -->
+          <view class='dis_flx ps-ralv  bd-bt-le al-c'>
+            <view class=' ft-wt ft-co-ff' style='width:200rpx;'>联系人</view>
+            <view class='flx_1 mt-10  ft-co-a1' style='text-align:left;'>
+              <input  placeholder="请输入收货人姓名" name='contact' value='{{EditAddress.contact}}'/>
+            </view>
+          </view>
+          <view class='dis_flx ps-ralv  bd-bt-le al-c'>
+            <view class=' ft-wt ft-co-ff' style='width:200rpx;'></view>
+            <view class='flx_1 mt-10 ' style='text-align:left;'>
+              <radio-group class="radio-group dis_flx flx_dir_row al-c" bindchange="radioChange">
+                <label class="radio dis_flx flx_dir_row al-c ft-co-ff mr-50 " wx:for="{{items}}">
+                  <radio class='mr-10' value="{{item.id}}" color='#ffa500' checked="{{item.checked}}" /> {{item.sex}}
+                </label>
+              </radio-group>
+            </view>
+          </view>
+          <!-- 联系方式 -->
+          <view class='dis_flx ps-ralv  bd-bt-le al-c'>
+            <view class=' ft-wt ft-co-ff' style='width:200rpx;'>手机号</view>
+            <view class='flx_1 mt-10  ft-co-a1' style='text-align:left;'>
+              <input  placeholder="请输入收货人手机号码" name='phoneCode' type='number' maxlength='11'  value='{{EditAddress.phoneCode}}' />
+            </view>
+          </view>
+          <!-- 省 -->
+          <view class='dis_flx ps-ralv  bd-bt-le'>
+            <view class='ft-wt ft-co-ff' style='width:200rpx;'>收货地址</view>
+            <view class='flx_1 mt-10  dis_flx al-c' style='text-align:left;'>
+              <!-- <view style="">{{areaInfo}}</view> -->
+              <image src='../../../image/dz@2x.png' style='width:38rpx;height:38rpx;'></image>
+              <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+                <view class="picker ft-co-a1 ml-10">{{region[0]}}，{{region[1]}}，{{region[2]}}
+                </view>
+              </picker>
+            </view>
+          </view>
+          <!-- 联系方式 -->
+          <view class='dis_flx ps-ralv  bd-bt-le al-c'>
+            <view class='ft-wt ft-co-ff' style='width:200rpx;'>详细地址</view>
+            <view class='flx_1 mt-10 ft-co-a1' style='text-align:left;'>
+              <input placeholder="例：16号楼5层301室" name='address'  value='{{EditAddress.detaAddress}}' />
+            </view>
+          </view>
+          <!-- 是否设为默认地址 -->
+          <view class='dis_flx ps-ralv  bd-bt-le al-c'>
+            <view class=' ft-wt ft-co-ff' style='width:200rpx;'>设为默认地址</view>
+            <view class='flx_1 mt-10 ' style='text-align:left;'>
+              <radio-group class="radio-group dis_flx flx_dir_row al-c" bindchange="defautAdressChange">
+                <label class="radio dis_flx flx_dir_row al-c ft-co-ff mr-50 " wx:for="{{defautAdress}}">
+                  <radio class='mr-10' value="{{item.id}}" color='#ffa500' checked="{{item.checked}}" /> {{item.isdefaut}}
+                </label>
+              </radio-group>
+            </view>
+          </view>
+           <!-- //是否设为默认地址 -->
+          <view class=' ps-ralv'>
+            <view class='ft-wt ft-co-ff' style='width:200rpx;'>标签</view>
+            <view class='ft-co-ff'>
+              <text class="bd-le mr-20 {{current == index?'bk-co-f50':''}}" data-index='{{index}}' bindtap='switchBtn' wx:for='{{label}}' style='padding:5rpx 50rpx;border-radius:30rpx;'>{{item.label}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 添加收货地址 -->
+      <view class='' style='position:fixed;bottom:0;width:100%;'>
+        <view class='pd-30'>
+          <button formType="submit" class='bd-rad-10 txt-c' style='background-color:#ffd321;height:100rpx;line-height:100rpx;'>确认修改</button>
+        </view>
+      </view>
+    </form>
+  </view>
+
+</view>

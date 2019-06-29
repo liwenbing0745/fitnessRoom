@@ -1,0 +1,25 @@
+/* pages/my/personInfo/personInfo.wxss */
+.userinfo-avatar {  
+  overflow:hidden;  
+  display: block;  
+  width: 150rpx;  
+  height: 150rpx; 
+  border:10rpx solid #4c4c4c;  
+  border-radius: 50%;  
+}
+.bd-bt-le{
+  border-bottom:1px solid #131313;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

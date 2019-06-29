@@ -1,0 +1,92 @@
+<view class="container pd-lr-30 ft-co-a1" id='header' style='margin-bottom:200rpx;'>
+  <view class='ft-co-f79 ft-sz-50 txt-c lh-100'>{{course.courseName}}</view>
+  <view class=' txt-c '>教练：
+    <text>{{coachInfo.coachName}}</text>
+  </view>
+  <view class=' txt-c mt-30'>地点：
+    <text>{{store.address}}</text>
+  </view>
+  <view class='mt-50  '>
+    <view class='dis_flx flx_dir_row al-c lh-60 ft-co-ff pd-tb-30 bd-bt-le'>
+      <view>课时</view>
+      <view class='flx_1 dis_flx al-c ju-r'>
+        <block wx:for='{{people}}'>
+          <view  class=" txt-c bd-rs-10 " style=''>
+            <text data-current="{{item.id}}" bindtap="swichNav1" wx:key="index" class="ml-10 txt-c  bd-rs-10 {{currentTab1==index ? 'bk-co-f50 ft-co-00' : 'bk-co-30'}}" style='padding:10rpx 30rpx;'>{{item.people}} 课时</text>
+          </view>
+        </block>
+      </view>
+    </view>
+    <!-- 总价 -->
+    <view class='dis_flx flx_dir_row al-c lh-60 ft-co-ff pd-tb-30 bd-bt-le'>
+      <view>总价</view>
+      <view class='flx_1 dis_flx al-c ju-r'>
+        {{course.price}} 元/课时 <!-- <text class='ft-co-f79'>(首次体验￥350元/课时)</text> -->
+      </view>
+    </view>
+    <!-- 会员折扣价 -->
+    <view class='dis_flx flx_dir_row al-c lh-60 ft-co-ff pd-tb-30 bd-bt-le' bindtap='jumpTopUp'>
+      <view>会员折扣价</view>
+      <view class='flx_1 dis_flx al-c ju-r'>
+        <text class='ft-co-f50'>尚未开通，点击开通</text>
+        <image class='ml-20' src='../../../image/xx2@2x.png' style='width:20rpx;height:30rpx;'></image>
+      </view>
+    </view>
+    <!-- 代金券 -->
+    <!-- <view class='dis_flx flx_dir_row al-c lh-60 ft-co-ff pd-tb-30 bd-bt-le'>
+      <view>代金券</view>
+      <view class='flx_1 dis_flx al-c ju-r'>
+        无代金券
+      </view>
+    </view> -->
+  </view>
+  <view class='mt-100 txt-c ft-co-ff'>
+    还需支付
+    <text class='ft-co-f50 ft-sz-50'>￥{{payPrice}}</text>
+  </view>
+  <view class='pd-20 ft-sz-24 mt-50'>
+    温馨提示：
+    <view>
+    1、开课时间前6个小时取消预约，支持全额退款；开课时间前1小时取消预约不支持退款；
+    </view>
+    <view>
+      2、开通会员即可享受会员价
+    </view>
+    <view>
+      3、会员用户所有支付均默认赠送金额为最先支付选项，赠送金额不足或为0元时选择充值金额支付；
+    </view>
+    <view>
+      4.退款请致电客服0755-894244323，退款金额放回支付账户。
+    </view>
+  </view>
+</view>
+<view wx:if="{{click==true}}" class='lh-100 bk-co-f50 txt-c' style='width:100%;height:100rpx;position:fixed;bottom:0;left:0;' bindtap='chooseSezi'>确认支付</view> 
+
+<!-- 支付方式 -->
+<view class='maskLayer' wx:if="{{chooseSize}}" bindtap='hideModal' catchtouchmove='true' data-index='1'></view>
+<!-- 弹出说明 -->
+<view style='border-radius:30rpx 30rpx 0 0;background: #fff;position:fixed;bottom:0;left:0;width: 100%;z-index: 10001;' class='ps-ralv choose3 pb-50' wx:if="{{chooseSize}}" animation='{{animationData}}' catchtouchmove='true'>
+  <view class='ps-abso   ' style='width:100%;top:50rpx;right:0rpx;z-index:1000000;' bindtap='hideModal' data-index='1'>
+    <view class='pd-lr-10 dis_flx ju-r'>
+      <image src='https://ouheng-1256353236.cos.ap-chengdu.myqcloud.com/appimage/image/indexDetail/cuowu.png' style='width:30rpx;height:30rpx;z-index:1000000;'></image>
+    </view>
+  </view>
+
+  <!-- 时间 -->
+  <view>
+    <view class=" ft-sz-30" style=''>
+      <view class='txt-c lh-100' style='width:100%;border-bottom:1px solid #303030;'>确认付款</view>
+    </view>
+    <view class='txt-c ft-sz-40 mt-30'>116元</view>
+    <view class='' style="height: 360rpx;">
+      <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio dis_flx flx_dir_row al-c pd-30" wx:for="{{items}}">
+          <view class='flx_1'>{{item.value}}</view>
+          <view class='flx_1 txt-r'><radio value="{{item.name}}" color='#ffa500' checked="{{item.checked}}" /> </view>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+
+  <view class='lh-100 bk-co-f50 txt-c' bindtap='hideModal' data-index='1' style='width:100%;height:100rpx;position:absolute;bottom:0;left:0;'>确定</view>
+</view>

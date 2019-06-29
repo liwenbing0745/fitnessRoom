@@ -1,0 +1,58 @@
+<!--pages/course/topUp/topUp.wxml-->
+<view class='pd-20'>
+
+  <!-- 剩余额度 -->
+  <!-- <view class='dis_flx flx_dir_row al-c lh-60 ft-co-ff pd-tb-30 bd-bt-le'>
+    <view>剩余额度</view>
+    <view class='flx_1 dis_flx al-c ju-r'>
+      尚未开通会员
+    </view>
+  </view> -->
+  <!-- 充值额度 -->
+  <view class='dis_flx flx_dir_row al-c lh-60 ft-co-ff pd-tb-30 '>
+    <view>充值额度</view>
+  </view>
+  <view class='  '>
+    <view class='dis_flx flex-flw'>
+      <view class="flx_50 dis_flx {{index%2 == 0?'':'ju-r'}} mb-20" wx:for='{{cjTab}}' bindtap='cjTab' data-index='{{index}}'>
+        <view style='width:96%;'>
+          <view class="{{currentTab == index?'bk-co-f50' : 'bd-le-ff0 ft-co-ff'}}  pd-tb-30 txt-c bd-rs-10">
+            <view class='ft-sz-40'>充{{item.cMoney}}元</view>
+            <view class='ft-sz-24 mt-20'>送{{item.sMoney}}元</view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+  <!-- 充值账户 -->
+  <view class='dis_flx flx_dir_row al-c lh-60 ft-co-ff pd-tb-30 '>
+    <view>充值方式</view>
+  </view>
+  <view class='dis_flx flx_dir_row al-c lh-60 ft-co-ff pd-tb-30 '>
+    <view>微信支付</view>
+    <view class='flx_1 dis_flx al-c ju-r'>
+      <radio value="1" checked="" />
+    </view>
+  </view>
+  <button bindtap='chooseSezi' data-index='2' class='lh-100 bk-co-f50 txt-c mt-50' style='position:fixed;bottom:0;left:0;width:100%;height:100rpx;border-radius:0;'>去充值</button>
+
+
+</view>
+
+
+<!-- 全部 -->
+<view class='maskLayer' wx:if="{{chooseSize2}}" bindtap='hideModal' catchtouchmove='true' data-index='2'></view>
+<!-- 弹出说明 -->
+<view style='width:100%;height:200px;' class='ps-ralv choose3 pb-50' wx:if="{{chooseSize2}}" catchtouchmove='true'>
+  <view class='lh-100 txt-c   bd-bt-le' style='width:100%;height:100rpx;'>输入充值金额</view>
+  <view class='pd-lr-20 dis_flx al-c ju-c mt-100' style='font-size:40rpx;'>
+    <text>￥</text>
+    <input class='ft-co-f79' placeholder="0-100" type='number' auto-focus style='width:150rpx;' />
+  </view>
+  <view class='choose1_4' style=''>
+    <view class='pd-lr-20'>
+    <button  class='  bk-co-f50   txt-c' type='' style='width:100%;height:80rpx;line-height:80rpx;border-radius:40rpx;'>确定</button>
+    </view>
+  </view>
+</view>

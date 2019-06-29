@@ -1,0 +1,116 @@
+<!--index.wxml-->
+<!--index.wxml--> 
+<!-- <view wx:if='{{show}}' class='maskLayer'></view>
+<view wx:if='{{show}}' style='width:100%;position:fixed;top:300rpx;z-index:10000000000;'>
+  <view style='padding:60rpx;'>
+    <view class='pd-20' style='background-color:#fff;border-radius:10rpx 10rpx 0 0;'>
+      <view class='dis_flx al-c lh-60 bd-bt-le ft-sz-24  txt-c' bindtap='jumpOrder'>
+        <view class='ft-co-a1 flx_1'>外卖订单：39239094328</view>
+        <view class='flx_1 txt-r ft-co-f50'>查看详情 ></view>
+      </view>
+      <view class='dis_flx al-c lh-60  ft-sz-24  txt-c'>
+        <view class=' flx_1 ft-sz-30' style='text-overflow: ellipsis;overflow: hidden;white-space: nowrap;'>桂庙新村学府路北房价快速的</view>
+        <view class='flx_1 txt-r ft-co-a1'>2019-03-15 16:35</view>
+      </view>
+      <view class='lh-60  ft-sz-24  ft-co-a1 '>
+        <text class=' '>周末双拼套餐A等</text>
+        <text>共2件商品</text>
+      </view>
+      <view class='lh-80  ft-sz-24 bd-bt-le'>
+        <text class=' '>￥</text>
+        <text class='ft-sz-30'>117元</text>
+      </view>
+      <view class='lh-80  ft-sz-24 ft-co-f50'>
+        <text class=' '>温馨提示：请先确认收货，在查看其他</text>
+      </view>
+    </view>
+    <view class='lh-80 txt-c bk-co-f50' bindtap='qrBtn' style='border-radius: 0 0 10rpx 10rpx;'>
+      确认收货
+    </view>
+  </view>
+</view> -->
+
+<view class="container" id='header' style=''>
+  <view class='scroll-view'>
+    <view class=''>
+      <!-- 轮播图 -->
+      <view class=" " style='' animation='{{animation}}'>
+        <swiper circular='{{circular}}' duration='{{duration}}' autoplay="{{autoplay}}" interval="{{interval}}" style='height:240rpx;'>
+          <block wx:for="{{imageUrl}}" >
+            <swiper-item class=''>
+              <!-- <navigator url='{{item.url}}' hover-class='none'> -->
+              <image bindtap='jumpTxt' data-id='{{item.id}}' src="{{item.filePath}}" class="slide-image bk-img " style='width:100%;height:240rpx;' lazy-load='true' binderror="errImg" data-err-img="imgUrls[{{index}}]" />
+              <!-- </navigator> -->
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <view class='pd-20' style=''>
+        <view class='dis_flx flx_dir_row al-c txt-c ft-co-ff'>
+          <view class='flx_1 dis_flx ju-c al-c' bindtap='chooseSezi' data-index='1' style='border-right:1px solid #000;'>
+            <block wx:if="{{defautCity ==null}}" wx:for='{{city}}'>
+              <text wx:if='{{currentTab == index}}'>{{item.areaName}}</text>
+            </block>
+            <block > 
+                 <text wx:if = '{{defautCity !=null }}'>{{defautCity}}</text> 
+            </block>
+            
+            <image class='ml-20' src='../../../image/xxa@2x.png' style='width:26rpx;height:14rpx;'></image>
+          </view>
+          <view class='flx_1 dis_flx ju-c al-c' bindtap='chooseSezi' data-index='2'>
+            全部
+            <image class='ml-20' src='../../../image/xxa@2x.png' style='width:26rpx;height:14rpx;'></image>
+          </view>
+        </view>
+        <!-- 主体内容 -->
+        <view class='mt-30'>
+          <view wx:for='{{conList}}' class='mb-20' bindtap='jumpGoods' data-id='{{item.id}}' data-title='{{item.storeName}}'>
+            <view class='bk-co-30'>
+              <image src='{{item.filePath}}' style='width:100%;height:250rpx;'></image>
+              <view class='pd-lr-20 lh-60 ft-co-ff ' style=''>
+                <view>{{item.storeName}}</view>
+                <view class='ft-sz-24'>
+                  <text style='border:1px solid #fff;border-radius:20rpx;padding:3rpx 10rpx'>1399km</text>
+                  <text class='ml-20'>{{item.address}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 广州全城 -->
+<view class='maskLayer' wx:if="{{chooseSize1}}" bindtap='hideModal' catchtouchmove='true' data-index='1'></view>
+<!-- 弹出说明 -->
+<view>
+  <!-- 市 -->
+  <view style='width:200rpx;height:100%;;' class='ps-ralv choose1 pb-50 bk-co-30' wx:if="{{chooseSize1}}" catchtouchmove='true'>
+    <view class='lh-100 txt-c  ft-co-a1 ' style=''>
+      <block wx:for='{{city}}'>
+        <view data-current="{{index}}" data-city="{{item.areaName}}" data-id='{{item.areaCode}}' data-areaid ="{{item.id}}" bindtap="swichNav" wx:key="index" class="txt-c bd-rs-10 {{currentTab==index ? 'ft-co-f50' : ''}}" style='width:100%;height:100rpx;'>{{item.areaName}}</view>
+      </block>
+    </view>
+  </view>
+  <!-- 区 -->
+  <view style='width:300rpx;height:100%;;' class='ps-ralv choose1_1 pb-50 bk-co-41' wx:if="{{areaHd}}" catchtouchmove='true'>
+    <view class='lh-100 txt-c  ft-co-a1 ' style=''>
+      <block wx:for='{{area}}'>
+        <view wx:key="index" class="txt-c bd-rs-10 " style='width:100%;height:100rpx;'>
+          <text class='bd-rs-10' data-current="{{index}}" data-id='{{item.id}}' bindtap="swichNav1" wx:key="index" class="txt-c bd-rs-10 {{currentTab1==index ? 'bk-co-f50 ft-co-00' : ''}}" style='padding:10rpx 30rpx;'>{{item.areaName}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+<!-- 默认排行 -->
+<view class='maskLayer' wx:if="{{chooseSize2}}" bindtap='hideModal' catchtouchmove='true' data-index='2'></view>
+<!-- 弹出说明 -->
+<view style='width:376rpx;height:100%;' class='ps-ralv choose3 pb-50' wx:if="{{chooseSize2}}" catchtouchmove='true'>
+  <view class='lh-100 txt-c bk-co-30 ft-co-a1' style='width:100%;height:100rpx;'>门店主题</view>
+  <view class='pd-lr-20 '>
+    <view wx:for='{{storeSubject}}' data-current="{{index}}" data-id='{{item.id}}' bindtap="swichTabShop" class="lh-80 ft-co-00  txt-c bd-rs-10 mt-50  {{currentTab2==index ? 'bk-co-f50' : 'bd-le ft-co-a1'}}" style='width:100%;height:80rpx;'>{{item.subject}}</view>
+  </view>
+</view>

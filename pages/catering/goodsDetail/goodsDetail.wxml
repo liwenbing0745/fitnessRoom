@@ -1,0 +1,224 @@
+<!--logs.wxml-->
+<view class="container " id='header' style='margin-bottom:200rpx;'>
+  <!-- 轮播图 -->
+  <view>
+    <swiper indicator-dots="{{indicatorDots}}" indicator-color='#303030' indicator-active-color='#a1a1a1' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{catering.bannersArray}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" style='width:100%;height:400rpx;' />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class='pd-lr-20'>
+    <!-- <view class='ft-co-ff pd-tb-20'>{{catering.caterName}}</view> -->
+    <!-- <view>
+      <text class='bk-co-f50 bd-rs-5 ft-sz-26' style='padding:0 5rpx;'>2人拼团</text>
+      <text class='ft-sz-24 ft-co-a1 ml-20'>24小时不成团退款</text>
+    </view> -->
+    <!-- 拼团玩法 -->
+    <!-- <view class='ft-co-ff pd-tb-20'>拼团玩法</view>
+    <view>
+      <view class='dis_flx flx_dir_row al-c ju-c'>
+        <view class='txt-c lh-50 '>
+          <view class='pd-10'>
+            <text class='bk-co-f50' style='padding:5rpx 10rpx;border-radius:30rpx;'>团</text>
+          </view>
+        </view>
+        <view style='width:150rpx;border-top:1px solid #a1a1a1;'></view>
+        <view class='txt-c lh-60'>
+          <view class='pd-10'>
+            <text class='bk-co-f50' style='padding:5rpx 10rpx;border-radius:30rpx;'>邀</text>
+          </view>
+        </view>
+        <view style='width:150rpx;border-top:1px solid #a1a1a1;'></view>
+        <view class='txt-c lh-60'>
+          <view class='pd-10'>
+            <text class='bk-co-f50' style='padding:5rpx 10rpx;border-radius:30rpx;'>成</text>
+          </view>
+        </view>
+      </view>
+      <view class='dis_flx flx_dir_row al-c ju-c ft-sz-20 ft-co-f50'>
+        <view class='txt-c '>
+          <view class='pd-lr-10'>
+            发送进团
+          </view>
+        </view>
+        <view style='width:120rpx'></view>
+        <view class='txt-c'>
+          <view class='pd-lr-10'>
+            邀请好友
+          </view>
+        </view>
+        <view style='width:120rpx'></view>
+        <view class='txt-c'>
+          <view class='pd-lr-10'>
+            拼团成功
+          </view>
+        </view>
+      </view>
+    </view> -->
+
+    <!-- 备注 -->
+    <!-- <view class='ft-sz-24 ft-co-a1 lh-40'> -->
+      <!-- <view>备注：</view> -->
+      <!-- <view wx:for='{{catering.remark}}'>{{item}}</view> 之前的-->
+      <!-- <view>
+        1、拼团仅支持单个餐品，不支持多个餐品合计拼团；
+      </view>
+      <view>
+       2、拼团餐品不支持多份购买
+      </view> -->
+      <!-- <view>1、拼团餐品不支持多份购买</view> 之前的-->
+    <!-- </view> -->
+
+    <!-- 套餐详情 -->
+    <view class='ft-co-ff mt-20 title'>
+      <view>套餐详情</view>
+      <view class='mt-10' style='width:100rpx;border-top:5rpx solid #ffa500;'></view>
+      <view class="texts">
+        <rich-text nodes="{{catering.details}}"></rich-text>
+        </view>
+      <!-- <view class="characteristics">
+        <text class="key">口味:</text>
+        <text class="val">香辣</text>
+      </view>
+      <view class="characteristics">
+        <text class="key">主料:</text>
+        <text class="val">鸡排</text>
+      </view>
+      <view class="characteristics">
+        <text class="key">功效:</text>
+        <text class="val">瘦身</text>
+      </view> -->
+    </view>
+    <!-- <view class='lh-60 '>
+      <text class='ft-sz-24 ft-co-a1 '>{{catering.detail[0]}}</text>
+    </view>
+    <view class='ft-sz-24 ft-co-ff lh-50'>
+      <view wx:for='{{catering.detail}}'>
+        <text class='ft-co-a1' wx:if='{{index>0}}'>{{item}}</text>
+      </view>
+    </view> -->
+
+    <!-- 温馨提示 -->
+    <view class='ft-co-ff mt-20 title'>
+      <view>温馨提示</view>
+      <view class='mt-10' style='width:100rpx;border-top:5rpx solid #ffa500;'></view>
+       <view class="prompt">
+        <view class="key">有效期:</view>
+        <view class="val">{{catering.remarks}}</view>
+      </view>
+
+       <!-- <view class="prompt">
+        <view class="key">使用时间:</view>
+        <view class="val">11:30 - 21:30</view>
+      </view> -->
+    </view>
+    <!-- <view class='ft-co-ff ft-sz-24 lh-50 mt-20'>
+      <view wx:for='{{catering.tip}}'>{{item}}</view>
+    </view> -->
+    <!-- 使用规则 -->
+    <view class='ft-co-ff mt-20 title'>
+      <view>使用规则</view>
+      <view class='mt-10' style='width:100rpx;border-top:5rpx solid #ffa500;'></view>
+    </view>
+    <view class='ft-co-ff ft-sz-24 lh-50 mt-20'>
+      <!-- <view wx:for='{{catering.usageRule}}'>{{item}}</view> -->
+      <view>1.户不可同时享受商家其他优惠</view>
+      <view>2.每张券建议一人使用 </view>
+      <view>3.酒水硬料等问题，详情请咨询商家</view>
+    </view>
+  </view>
+  <!-- 购买按钮 -->
+  <view wx:if='{{show1}}' class='dis_flx flx_dir_row' style="width:100%;position:fixed;bottom:-2rpx;background-color: #333;">
+    <view class='dis_flx flx_dir_row' style='width:100%;'>
+      <view class='flx_1  txt-r' data-index='0' bindtap='jumpOrder' wx:if='{{snapId != 1}}'>
+        <view class='' style=''>
+          <view class=' ft-sz-30 dis_flx al-c ju-c text_box'>
+            <view style=" float: left;">
+              <text class='ft-sz-40'>单价</text>
+              <text class='ft-sz-40'>￥{{catering.price}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view bindtap='yqBtn' class='flx_1 txt-l pay_box_body'>
+        <view style=''>
+          <view class='dis_flx ju-c al-c txt-c txt-c pay_box'>
+            <view>
+              <!-- <text class='ft-sz-40'>￥30</text> -->
+              <text class='ft-sz-40'>去购买</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 发起拼团，邀请好友 -->
+  <view wx:else class='dis_flx flx_dir_row' style="width:100%;position:fixed;bottom:-2rpx;">
+    <view class='dis_flx flx_dir_row' style='width:100%;'>
+      <view class='flx_1  txt-r' data-index='0' bindtap='jumpOrder' wx:if='{{snapId != 1}}'>
+        <view class='' style=''>
+          <view class=' ft-sz-30 dis_flx al-c ju-c txt-c' style='background-color:#333;color:#ffa500;width:100%;height:100rpx;'>
+            <view class=''>
+              <view class='ft-sz-26'>再邀请1人,立即成团</view>
+              <view class='ft-sz-24 dis_flx al-c'>剩余时间
+                <text class='ft-sz-20 bd-rad-5 ml-10 txt-c ' style='display:inline-block;width:30rpx;height:30rpx;border:1px solid #ffa500;'> {{countDownDay}} </text>
+                <text class='ml-5' style=''> : </text>
+                <text class='ft-sz-20 bd-rad-5 ml-5 txt-c  ' style='display:inline-block;width:30rpx;height:30rpx;border:1px solid #ffa500;'> {{countDownHour}} </text>
+                <text class='ml-5 ' style=''> : </text>
+                <text class='ft-sz-20 bd-rad-5 ml-5 txt-c ' style='display:inline-block;width:30rpx;height:30rpx;border:1px solid #ffa500;'> {{countDownMinute}} </text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view bindtap='chooseSezi' data-index='1' class='flx_1 txt-l'>
+        <view style=''>
+          <view class='dis_flx ju-c al-c txt-c txt-c ' style='background-color:#ffa500;width:100%;height:100rpx;'>
+            <view>
+              <view class='ft-sz-35'>邀请好友参团</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!-- 邀请好友参团 -->
+<view class='maskLayer' wx:if="{{chooseSize}}" bindtap='hideModal' catchtouchmove='true'></view>
+<!-- 分享好友/下载图片 -->
+<view style='border-radius:30rpx 30rpx 0 0 ;' catchtouchmove='true' class='choose' wx:if="{{chooseSize}}" animation='{{animationData}}'>
+  <view>
+    <view>
+      <view class=''>
+        <view class='  txt-c lh-80' style='width:100%' bindtap='hideModal' style='border-bottom:1px solid #ddd;'>
+          分享到
+        </view>
+      </view>
+      <view class='pd-lr-20'>
+        <view class='dis_flx flx_dir_row mt-20 txt-c lh-40 ft-sz-24 ft-co-33'>
+          <view class='flx_1 ps-ralv txt-c'>
+            <image src='../../../image/phote.png' style='width:100rpx;height:100rpx;margin:0 auto;'></image>
+            <view>分享给好友</view>
+            <button class='mt-20  ps-abso' bindtap='onShareAppMessage' plain="true" open-type="share" style='border:none;top:0;width:100%;height:120rpx;left:0;'></button>
+          </view>
+          <view class='flx_1 '>
+            <navigator class='' hover-class='none' url='../shareFriend/shareFriend?productId={{product.id}}'>
+              <image src='../../../image/phote.png' style='width:100rpx;height:100rpx;margin:0 auto;'></image>
+              <view>生成商品图片</view>
+            </navigator>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='txt-c mt-20 lh-80  bk-co-f50' bindtap='hideModal' style='width:100%;height:80rpx;'>
+      取消
+    </view>
+  </view>
+</view>

@@ -1,0 +1,274 @@
+<!--pages/home/lx/lx.wxml-->
+<view class='' style='padding-bottom:150rpx;'>
+  <view class='bk-co-30'>
+    <!-- 切换 -->
+    <view class='bk-co-30' style='position:fixed;top:0;width:100%;height:100rpx;z-index:111111;'>
+      <view class='dis_flx ht-60 lh-50 flx_dir_row al-c pd-tb-20' style=''>
+        <view class="flx_50  txt-c " data-current="{{item.id}}" bindtap="swichNav" wx:for="{{list}}" wx:key="index">
+          <view class='ps-ralv' style=''>
+            <view class="notSelect {{currentTab==index ? 'on' : ''}}" style=''>
+              <view class='ft-sz-30 ft-co-a1 st-ft-sz2 mt-10'>
+                <text class=''>{{item.list}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='mt-100 pd-20'>
+
+    <view wx:if='{{currentTab == 0}}' class='ft-co-a1 '>
+      <view class='pd-lr-10 bk-co-30 mb-20 bd-rs-10'>
+        <!-- 选择收货地址 -->
+        <view class='dis_flx flx_dir_row al-c lh-100 bd-bt-le pb-10 pd-lr-10' bindtap='jumpAddress'>
+          <view class='dis_flx al-c ft-co-f50 flx_1' hidden="{{address.length != 0}}">
+            <image src='../../../image/zysxl@2x.png' style='width:38rpx;height:38rpx;'></image>
+            <text class='ml-10'>选择收货地址</text>
+          </view>
+          <view class='dis_flx al-c ft-co-f50 flx_1'>
+            <image src='../../../image/zysxl@2x.png' hidden="{{address.length == 0}}" style='width:38rpx;height:38rpx;'></image>
+            <view >
+              <view >
+                <text class='ml-10' hidden="{{address.legnth == 0}}">{{address[0].detaAddress}}</text>
+              </view>
+              <view >
+              <text class='ml-10' hidden="{{address.length == 0}}">{{address[0].contact + '(' + (address[0].gender == 0 ? '女士' : '先生') + ')' + address[0].phoneCode}}</text>
+              </view >
+            </view>
+          </view>
+          <view class='dis_flx ju-r' style='width:200rpx;'>
+            <image src='../../../image/xxx@2x.png' style='width:15rpx;height:25rpx;'></image>
+          </view>
+        </view>
+        <!-- 选择收货地址 -->
+        <view class='dis_flx flx_dir_row al-c lh-100  pb-10 pd-lr-10' bindtap='chooseSezi' data-index='1'>
+          <view class='dis_flx al-c ft-co-f50 flx_1'>
+            <image src='../../../image/zysxl@2x.png' style='width:38rpx;height:38rpx;'></image>
+            <text class='ml-10'>送达时间</text>
+            <view class='flx_1 ml-10 ft-co-ff txt-r'>
+              尽快送达({{hour}}：{{minute}})
+            </view>
+          </view>
+          <view class='dis_flx ju-r' style='width:30rpx;'>
+            <image src='../../../image/xxx@2x.png' style='width:15rpx;height:25rpx;'></image>
+          </view>
+        </view>
+      </view>
+      <view class='pd-lr-20 bk-co-30 ft-co-f50 mb-20 bd-rs-10 lh-100'>订单信息</view>
+      <view>
+        <view class='pd-20 bk-co-30 mb-20' wx:for='{{content}}'>
+          <view class='dis_flx flx_dir_row al-c'>
+            <image class='bd-rs-10' src='{{item.picturePath}}' style='width:150rpx;height:150rpx;'></image>
+            <view class='flx_1 pl-20'>
+              <view class='ft-co-ff'>{{item.caterName}}</view>
+              <view class='ft-sz-28 ft-co-ff mt-10 mt-30 dis_flx al-c'>
+                <view class='flx_1'>x {{item.goodsNum}}</view>
+                <view class='ft-co-f50 flx_1 txt-r'>
+                  ￥{{item.price}}
+                  <text class='ft-sz-26'>元</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='pd-lr-10 bk-co-30 mb-20 bd-rs-10'>
+        <!-- 合计 -->
+        <view class='dis_flx flx_dir_row al-c lh-100 bd-bt-le pb-10 pd-lr-10'>
+          <view class='dis_flx al-c  flx_1'>
+            <text class='ml-10'>合计</text>
+          </view>
+          <view class='dis_flx ju-r' style='width:200rpx;'>
+            ￥{{allTotal1}} 元
+          </view>
+        </view>
+        <!-- 包装费 -->
+        <view class='dis_flx flx_dir_row al-c lh-100 bd-bt-le pb-10 pd-lr-10'>
+          <view class='dis_flx al-c  flx_1'>
+            <text class='ml-10'>包装费</text>
+          </view>
+          <view class='dis_flx ju-r' style='width:200rpx;'>
+            ￥{{packagingFee}} 元
+          </view>
+        </view>
+        <!-- 配送费 -->
+        <view class='dis_flx flx_dir_row al-c lh-100 bd-bt-le  pb-10 pd-lr-10'>
+          <view class='dis_flx al-c  flx_1'>
+            <text class='ml-10'>配送费</text>
+          </view>
+          <view class='dis_flx ju-r' style='width:200rpx;'>
+            ￥{{shippingFee}} 元
+          </view>
+        </view>
+        <!-- 实付金额 -->
+        <view class='dis_flx flx_dir_row al-c lh-100 bd-bt-le pb-10 pd-lr-10'>
+          <view class='dis_flx al-c  flx_1'>
+            <text class='ml-10'>实付金额</text>
+          </view>
+          <view class='dis_flx ju-r ft-co-f50' style='width:200rpx;'>
+            ￥{{totalAmount}} 元
+          </view>
+        </view>
+        <!-- 手机号码 -->
+        <!-- <view class='dis_flx flx_dir_row al-c lh-100 bd-bt-le pb-10 pd-lr-10' bindtap='jumpTel'>
+          <view class='dis_flx al-c  flx_1'>
+            <text class='ml-10'>手机号码</text>
+          </view>
+          <view class='dis_flx al-c ju-r  ft-co-f50' style='width:300rpx;'>
+            <text class='mr-20'>{{tel}}</text>
+            <image src='../../../image/xxx@2x.png' style='width:15rpx;height:25rpx;'></image>
+          </view>
+        </view> -->
+        <!-- 备注 -->
+        <view class='dis_flx flx_dir_row al-c lh-100 pb-10 pd-lr-10' bindtap='jumpNote'>
+          <view class='dis_flx al-c  flx_1'>
+            <text class='ml-10'>备注</text>
+          </view>
+          <view class='dis_flx al-c ju-r ' style='width:300rpx;'>
+            <text class='mr-20 ft-co-99 ft-sz-24'>{{remarks}}</text>
+            <image src='../../../image/xxx@2x.png' style='width:15rpx;height:25rpx;'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if='{{currentTab == 1}}' class='ft-co-a1'>
+      <view class='pd-lr-10 bk-co-30 mb-20 bd-rs-10'>
+        <!-- 选择收货地址 -->
+        <view class='dis_flx flx_dir_row al-c lh-100 bd-bt-le pb-10 pd-lr-10' bindtap='jumpZqAddress'>
+          <view class='dis_flx al-c ft-co-f50 flx_1' >
+            <image src='../../../image/zysxl@2x.png' style='width:38rpx;height:38rpx;'></image>
+            <text class='ml-10'>选择取货地址</text>
+          </view>
+          <view class='dis_flx ju-r' style='width:200rpx;'>
+            <image src='../../../image/xxx@2x.png' style='width:15rpx;height:25rpx;'></image>
+          </view>
+        </view>
+        <!-- 送达时间 -->
+        <!-- <view class='dis_flx flx_dir_row al-c lh-100  pb-10 pd-lr-10' bindtap='chooseSezi' data-index='1'>
+          <view class='dis_flx al-c ft-co-f50 flx_1'>
+            <image src='../../../image/zysxl@2x.png' style='width:38rpx;height:38rpx;'></image>
+            <text class='ml-10'>送达时间</text>
+            <view class='flx_1 ml-10 ft-co-ff txt-r'>
+              尽快送达({{hour}}：{{minute}})
+            </view>
+          </view>
+          <view class='dis_flx ju-r' style='width:30rpx;'>
+            <image src='../../../image/xxx@2x.png' style='width:15rpx;height:25rpx;'></image>
+          </view>
+        </view> -->
+      </view>
+      <view class='pd-lr-20 bk-co-30 ft-co-f50 mb-20 bd-rs-10 lh-100'>订单信息</view>
+      <view>
+        <view class='pd-20 bk-co-30 mb-20' wx:for='{{content}}'>
+          <view class='dis_flx flx_dir_row al-c'>
+            <image class='bd-rs-10' src='{{item.picturePath}}' style='width:150rpx;height:150rpx;'></image>
+            <view class='flx_1 pl-20'>
+              <view class='ft-co-ff'>{{item.caterName}}</view>
+              <view class='ft-sz-28 ft-co-ff mt-10 mt-30 dis_flx al-c'>
+                <view class='flx_1'>x{{item.goodsNum}}</view>
+                <view class='ft-co-f50 flx_1 txt-r'>
+                  ￥{{item.price}}
+                  <text class='ft-sz-26'>元</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='pd-lr-10 bk-co-30 mb-20 bd-rs-10'>
+        <!-- 合计 -->
+        <view class='dis_flx flx_dir_row al-c lh-100 bd-bt-le pb-10 pd-lr-10'>
+          <view class='dis_flx al-c  flx_1'>
+            <text class='ml-10'>合计</text>
+          </view>
+          <view class='dis_flx ju-r' style='width:200rpx;'>
+            ￥{{allTotal1}} 元
+          </view>
+        </view>
+        <!-- 包装费 -->
+        <view class='dis_flx flx_dir_row al-c lh-100 bd-bt-le pb-10 pd-lr-10'>
+          <view class='dis_flx al-c  flx_1'>
+            <text class='ml-10'>包装费</text>
+          </view>
+          <view class='dis_flx ju-r' style='width:200rpx;'>
+            ￥{{packagingFee}} 元
+          </view>
+        </view>
+        <!-- 实付金额 -->
+        <view class='dis_flx flx_dir_row al-c lh-100 bd-bt-le pb-10 pd-lr-10'>
+          <view class='dis_flx al-c  flx_1'>
+            <text class='ml-10'>实付金额</text>
+          </view>
+          <view class='dis_flx ju-r ' style='width:300rpx;'>
+            <text class='ft-co-f50'>￥{{totalAmount}} 元</text>
+          </view>
+        </view>
+        <!-- 手机号码 -->
+        <view class='dis_flx flx_dir_row al-c lh-100 bd-bt-le pb-10 pd-lr-10' bindtap='jumpTel'>
+          <view class='dis_flx al-c  flx_1'>
+            <text class='ml-10'>手机号码</text>
+          </view>
+          <view class='dis_flx al-c ju-r  ft-co-f50' style='width:300rpx;'>
+            <text class='mr-20'>{{tel}}</text>
+            <image src='../../../image/xxx@2x.png' style='width:15rpx;height:25rpx;'></image>
+          </view>
+        </view>
+        <!-- 备注 -->
+        <view class='dis_flx flx_dir_row al-c lh-100 pb-10 pd-lr-10' bindtap='jumpNote'>
+          <view class='dis_flx al-c  flx_1'>
+            <text class='ml-10'>备注</text>
+          </view>
+          <view class='dis_flx al-c ju-r ' style='width:300rpx;'>
+            <text class='mr-20 ft-co-99 ft-sz-24'>{{remarks}}</text>
+            <image src='../../../image/xxx@2x.png' style='width:15rpx;height:25rpx;'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view bindtap='chooseSezi' data-index='2' class='lh-100 bk-co-f50 txt-c' style='width:100%;height:100rpx;position:fixed;bottom:0;left:0;'>立即付款</view>
+
+
+
+<!-- 满赠 -->
+<!--  -->
+<view class='maskLayer' wx:if="{{chooseSize}}" bindtap='hideModal' catchtouchmove='true' data-index='1'></view>
+<!-- 弹出说明 -->
+<view style='border-radius:30rpx 30rpx 0 0;' class='ps-ralv choose3 pb-50' wx:if="{{chooseSize}}" animation='{{animationData}}' catchtouchmove='true'>
+  <view class='ps-abso   ' style='width:100%;top:50rpx;right:0rpx;z-index:1000000;' bindtap='hideModal' data-index='1'>
+    <view class='pd-lr-10 dis_flx ju-r'>
+      <image src='https://ouheng-1256353236.cos.ap-chengdu.myqcloud.com/appimage/image/indexDetail/cuowu.png' style='width:30rpx;height:30rpx;z-index:1000000;'></image>
+    </view>
+  </view>
+
+  <!-- 时间 -->
+  <view wx:if='{{tabIndex == 1}}'>
+    <picker-view class='txt-c' indicator-style="height: 50px;" style="width: 100%; height: 200px;" value="{{value}}" bindchange="bindChange">
+      <picker-view-column>
+        <view wx:for="{{hours}}" style="line-height: 50px">{{item}}时</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{minutes}}" style="line-height: 50px">{{item}}分</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+  <view wx:else>
+    <view class=" ft-sz-30" style=''>
+      <view class='txt-c lh-100' style='width:100%;border-bottom:1px solid #303030;'>确认付款</view>
+    </view>
+    <view class='txt-c ft-sz-40 mt-30'>￥{{totalAmount}}元</view>
+    <view class=''>
+      <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio dis_flx flx_dir_row al-c pd-30" wx:for="{{items}}">
+          <view class='flx_1'>{{item.value}}</view>
+          <view class='flx_1 txt-r'><radio value="{{item.name}}" color='#ffa500' checked="{{item.checked}}" /> </view>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+
+  <view class='lh-100 bk-co-f50 txt-c' bindtap='hideModal' data-index='1' style='width:100%;height:100rpx;position:absolute;bottom:0;left:0;'>确定</view>
+</view>

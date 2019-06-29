@@ -1,0 +1,22 @@
+/* pages/home/lx/lx.wxss */
+.on {
+  font-weight: bold;
+  padding: 0 20rpx 0 20rpx;
+  display: inline-block;
+}
+.on>.st-ft-sz2{
+  color:#feb900;
+  padding-bottom:5rpx;
+  border-bottom:5rpx solid #feb900;
+}
+.sex {
+  color:#feb900;
+  border:none;
+  background-color:#212121;
+}
+.xuanzeBox{
+  text-align: left;
+}
+.btn_botton_box{
+  padding-bottom: 15rpx;
+}

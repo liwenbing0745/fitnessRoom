@@ -1,0 +1,183 @@
+<!--pages/course/jlJob/jlJob.wxml-->
+<view>
+  <!-- 广告 -->
+  <view style=''>
+    <image src="../../../image/tc2@2x.png" class="slide-image" mode='scaleToFill' style='width:100%;height:300rpx;' />
+  </view>
+
+  <view class='pd-20 bk-co-30'>
+    <view class='dis_flx txt-c '>
+      <view class="flx_1  ft-co-ff {{index==2?'':'br-le'}} {{currTab == index?'ft-co-ff':'ft-co-a1'}}" data-index='{{index}}' wx:for='{{list}}' bindtap='swTab'>{{item.txt}}</view>
+    </view>
+  </view>
+
+  <!-- 教练 -->
+  <view class='pd-20' wx:if="{{currTab == 0}}">
+    <view class=' bk-co-30 bd-rs-10 pd-20'>
+      <view class='dis_flx flx_dir_row al-c'>
+        <view class='flx_1 lh-50 pr-20'>
+          <view class='ft-sz-35 ft-co-ff'>{{coach.coachName}}</view>
+          <view class='ft-co-a1 ft-sz-26'>{{coach.introduction}}</view>
+        </view>
+        <image src='{{coach.avatar}}' style='width:120rpx;height:120rpx;border-radius:60rpx;'></image>
+      </view>
+    </view>
+    <!-- 学员排名 -->
+    <view>
+      <view class='pd-20 txt-c ft-sz-35 ft-co-ff'>学员排名</view>
+      <view class=' bk-co-30 bd-rs-10 pd-lr-20'>
+        <view class='dis_flx al-c txt-c bb-le pd-tb-20 ft-co-ff' wx:for='{{xyPm}}'>
+          <view class='flx_1'>
+            <text class='ft-co-f50'>{{index+1}}.</text>
+            <text class='ml-20'>{{item.name}}</text>
+          </view>
+          <view class='flx_1'>{{item.num}} 次</view>
+        </view>
+        <view class='pd-tb-20 dis_flx ju-c'>
+          <image src='../../../image/xxa@2x.png' style='width:30rpx;height:15rpx;'></image>
+        </view>
+      </view>
+    </view>
+    <!-- 教练课程 -->
+    <view class='mt-20'>
+      <view class='ft-co-ff'>教练课程</view>
+      <!-- 时间 -->
+      <view class='pd-20 dis_flx al-c txt-c ft-co-a1 ft-sz-24'>
+        <view class='flx_1 '>
+          <view class='dis_flx al-c ju-c date_btn' style=''>
+            <view>
+              <view>今天</view>
+              <view>04:10</view>
+            </view>
+          </view>
+        </view>
+        <view class='flx_1'>四</view>
+        <view class='flx_1'>五</view>
+        <view class='flx_1'>六</view>
+        <view class='flx_1'>日</view>
+        <view class='flx_1'>一</view>
+        <view class='flx_1'>二</view>
+      </view>
+
+      <!-- 内容 -->
+      <view class='bk-co-30  bd-rs-10 mt-20' wx:for="{{goods}}" id='channelSwiper' wx:for-index="idx">
+        <view class='dis_flx flx_dir_row lh-70 pd-lr-20 ft-sz-24 ft-co-ff bk-co-2a' style='border-radius:10rpx 10rpx 0 0;'>
+          <view>{{item.shopHome}}</view>
+          <view class=' flx_1 dis_flx ju-r al-c ft-co-a1'>
+            <text class=''>查看地图</text>
+            <image class='ml-10' src='../../../image/xx2@2x.png' style='width:20rpx;height:28rpx;'></image>
+          </view>
+        </view>
+        <view class='pd-lr-20'>
+          <view class=' pd-tb-30' style='' data-id='{{item.productid}}' bindtap='jumpfatBurn'>
+            <view class=' dis_flx flx_dir_row ft-co-ff ' style=''>
+              <view class=' ' style='width:150rpx;'>
+                <image src="{{item.image}}" class="slide-image bd-rs-10" style="width:150rpx;height:150rpx" />
+              </view>
+              <view class='pd-lr-20 flx_1 dis_flx al-c'>
+                <view>
+                  <view class=' ft-sz-30  '>{{item.name}}</view>
+                  <view class='mt-20 ft-sz-24 ft-co-a1'>
+                    <text>{{item.content}}</text>
+                  </view>
+                  <view class='mt-20 ft-sz-24 '>
+                    <text class='ft-co-f50'>{{item.date}}</text>
+                    <text class='ml-10'>￥{{item.price}}</text>
+                    <text class='ml-10'>(会员价￥{{item.vipPrice}})</text>
+                  </view>
+                </view>
+              </view>
+              <view class='txt-r mt-20 dis_flx al-c' style='width:100rpx;'>
+                <!-- 确认收货 -->
+                <view class='flx_1 dis_flx flx_dir_row ju-r ft-sz-24' style='text-align:right;'>
+                  <view class='pd-lr-10 txt-c'>
+                    <text class='np-btn bd-rs-10 bk-co-f50 ft-co-00' style='' bindtap='onPayMoney' data-id='{{idx}}'>预约</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 学员排名 -->
+  <view class='pd-20' wx:if="{{currTab == 1}}">
+    <view class='pd-20 txt-c ft-sz-35 ft-co-ff'>学员排名</view>
+    <view class=' bk-co-30 bd-rs-10 pd-lr-20'>
+      <view class='dis_flx al-c txt-c bb-le pd-tb-20 ft-co-ff' wx:for='{{xyPm}}'>
+        <view class='flx_1'>
+          <text class='ft-co-f50'>{{index+1}}.</text>
+          <text class='ml-20'>{{item.name}}</text>
+        </view>
+        <view class='flx_1'>{{item.num}} 次</view>
+      </view>
+      <view class='pd-tb-20 dis_flx ju-c'>
+        <image src='../../../image/xxa@2x.png' style='width:30rpx;height:15rpx;'></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- 学员排名 -->
+  <view class='pd-20' wx:if="{{currTab == 2}}">
+    <view class='ft-co-ff'>教练课程</view>
+    <!-- 时间 -->
+    <view class='pd-20 dis_flx al-c txt-c ft-co-a1 ft-sz-24'>
+      <view class='flx_1 '>
+        <view class='dis_flx al-c ju-c date_btn' style=''>
+          <view>
+            <view>今天</view>
+            <view>04:10</view>
+          </view>
+        </view>
+      </view>
+      <view class='flx_1'>四</view>
+      <view class='flx_1'>五</view>
+      <view class='flx_1'>六</view>
+      <view class='flx_1'>日</view>
+      <view class='flx_1'>一</view>
+      <view class='flx_1'>二</view>
+    </view>
+
+    <!-- 内容 -->
+    <view class='bk-co-30  bd-rs-10 mt-20' wx:for="{{goods}}" id='channelSwiper' wx:for-index="idx">
+      <view class='dis_flx flx_dir_row lh-70 pd-lr-20 ft-sz-24 ft-co-ff bk-co-2a' style='border-radius:10rpx 10rpx 0 0;'>
+        <view>{{item.shopHome}}</view>
+        <view class=' flx_1 dis_flx ju-r al-c ft-co-a1'>
+          <text class=''>查看地图</text>
+          <image class='ml-10' src='../../../image/xx2@2x.png' style='width:20rpx;height:28rpx;'></image>
+        </view>
+      </view>
+      <view class='pd-lr-20'>
+        <view class=' pd-tb-30' style='' data-id='{{item.productid}}' bindtap='jumpfatBurn'>
+          <view class=' dis_flx flx_dir_row ft-co-ff ' style=''>
+            <view class=' ' style='width:150rpx;'>
+              <image src="{{item.image}}" class="slide-image bd-rs-10" style="width:150rpx;height:150rpx" />
+            </view>
+            <view class='pd-lr-20 flx_1 dis_flx al-c'>
+              <view>
+                <view class=' ft-sz-30  '>{{item.name}}</view>
+                <view class='mt-20 ft-sz-24 ft-co-a1'>
+                  <text>{{item.content}}</text>
+                </view>
+                <view class='mt-20 ft-sz-24 '>
+                  <text class='ft-co-f50'>{{item.date}}</text>
+                  <text class='ml-10'>￥{{item.price}}</text>
+                  <text class='ml-10'>(会员价￥{{item.vipPrice}})</text>
+                </view>
+              </view>
+            </view>
+            <view class='txt-r mt-20 dis_flx al-c' style='width:100rpx;'>
+              <!-- 确认收货 -->
+              <view class='flx_1 dis_flx flx_dir_row ju-r ft-sz-24' style='text-align:right;'>
+                <view class='pd-lr-10 txt-c'>
+                  <text class='np-btn bd-rs-10 bk-co-f50 ft-co-00' style='' bindtap='onPayMoney' data-id='{{idx}}'>预约</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

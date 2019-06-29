@@ -1,0 +1,55 @@
+<!--pages/my/czAcity/czAcity.wxml-->
+<view class=' pd-20 '>
+  <view class='ps-ralv'>
+    <image src='../../../image/04afe511db34aad25d040577ae8cda1.png' style='width:100%;height:380rpx;'></image>
+    <view class='ps-abso ' style='top:0;left:0;padding:36rpx 20rpx;'>
+      <view class='ft-co-f50 ft-sz-36'>会员活动</view>
+      <view class='mt-48 ft-co-dc'>
+        <view class='ft-sz-24'>活动期限</view>
+        <view class='mt-24 ft-sz-24 ft-co-ff'>2017.01.01-2019.01.01</view>
+      </view>
+      <view class='mt-38'>
+        <view class='ft-sz-24 ft-co-dc'>活动期限</view>
+        <view class='mt-24 ft-sz-24 ft-co-ff'>充多少送多少现金抵扣</view>
+      </view>
+    </view>
+  </view>
+  <view class='dis_flx mt-28'>
+    <view class='flx_1 ft-sz-24 '  >
+      <view class='ps-ralv' style='width:96%; '>
+        <image src='../../../image/bk_yellow@2x.png' style='width:100%;height:140rpx;'></image>
+        <view class='pd-20 ps-abso ft-sz-26' style='top:0;left:0;'>
+          <view class=''>充值金额</view>
+          <view class='mt-24'><text class='ft-sz-36'>200</text> 元</view>
+        </view>
+      </view>
+    </view>
+    <view class='flx_1 dis_flx ju-r' >
+      <view class='ps-ralv' style='width:96%;'>
+        <image src='../../../image/bk_yellow@2x.png' style='width:100%;height:140rpx;'></image>
+        <view class='pd-20 ps-abso ft-sz-26' style='top:0;left:0;'>
+          <view>赠送金额</view>
+          <view class='mt-24'><text class='ft-sz-36'>200</text> 元</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class=' dis_flx al-c ft-sz-24 ft-co-f50 bd-bt-le' style='padding:38rpx 22rpx;' bindtap='jumpStatement'>
+    <view class='flx_1'>消费明细</view>
+    <image src='../../../image/jt_ye1@2x.png' style='width:15rpx;height:20rpx;'></image>
+  </view>
+  <view class=' ft-co-a1 lh-40 ft-sz-24' style='padding:38rpx 22rpx;'>
+    <view>备注说明：</view>
+    <view>1、所有支付均默认赠送金额为最先支付选项，赠送金额不足或为0元时选择充值金额支付;</view>
+    <view>2、提现请致电客服0755-8982093,提现途径可与客服协商;</view>
+  </view>
+</view>
+
+
+<!--  -->
+<view class=' txt-c ' style='position:fixed;bottom:0;width:100%;line-height:98rpx;'>
+  <!-- <navigator class='' hover-class='none' url='../addAddress/addAddress' style='padding:30rpx 30rpx;'> -->
+    <view class='lh-100 bk-co-feb ft-co-21 txt-c' style='width:100%;height:98rpx;position:fixed;bottom:0;left:0;'>充值</view>
+  <!-- </navigator> -->
+</view>
+

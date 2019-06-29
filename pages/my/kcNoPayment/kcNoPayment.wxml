@@ -1,0 +1,220 @@
+<!--logs.wxml-->
+<view class="container">
+  <!-- 切换 -->
+  <view class='dis_flx flx_dir_row' style='position:fixed;top:0;width:100%;background-color:#303030;z-index:111111;height:100rpx;line-height:100rpx;'>
+    <view class='flx_1  txt-c ft-sz-30 ft-co-a1' wx:for="{{list}}" wx:key="index">
+      <view class='ps-ralv' style=''>
+        <view class="notSelect {{currentTab==index ? 'on' : ''}}" data-current="{{index}}" bindtap="swichNav" style=''>
+          <text class='bb_le'>{{item.list}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分隔线 -->
+  <view class='mt-80' style='width:100%;height:2rpx;background-color:#f6f6f6;'></view>
+
+  <!-- 内容 -->
+  <view class='mt-20'>
+    <!-- 全部 -->
+    <view wx:if="{{currentTab == 0}}">
+      <view class='pd-20' wx:if='{{goods.length>0}}'>
+        <view class='bk-co-30 pd-lr-20 bd-rs-10 mt-20' wx:for="{{goods}}" id='channelSwiper' wx:for-index="idx">
+          <view class=''>
+            <view class='' style='padding:36rpx 0;' data-id='{{item.productid}}' bindtap='jumpGoodsDetail'>
+              <view class=' dis_flx flx_dir_row ft-co-ff ' style=''>
+                <view class=' ' style='width:150rpx;height:150rpx;'>
+                  <image src="{{item.image}}" class="slide-image bd-rs-10" style="width:150rpx;height:150rpx" />
+                </view>
+                <view class='pd-lr-20 flx_1 dis_flx al-c'>
+                  <view>
+                    <view class=' ft-sz-30  '>{{item.name}}</view>
+                    <view class='mt-24 ft-sz-24 ft-co-f50'>
+                      <text class='ft-co-ff'>原价：</text> ￥{{item.price}}元</view>
+                    <view class='mt-24 ft-sz-24'>
+                      <text class='ft-co-f50'>{{item.date}}</text>
+                    </view>
+                  </view>
+                </view>
+                <view class='txt-r mt-20 dis_flx al-c ju-r' style='width:150rpx;'>
+                  <!-- 代付款 -->
+                  <view class='dis_flx flx_dir_row  ft-sz-20' wx:if="{{item.status == '1'}}">
+                    <view class='flx_1 dis_flx flx_dir_row txt-r' style='text-align:right;' wx:if="{{item.status == '1'}}">
+                      <view class='pd-lr-10 txt-c'>
+                        <text class='ft-co-33  bd-rad-5 np-btn bd-rs-10 ft-co-00 bk-co-feb' bindtap='onPayMoney' data-id='{{idx}}'>退款</text>
+                      </view>
+                    </view>
+                  </view>
+                  <!-- 确认收货 -->
+                  <view class='dis_flx flx_dir_row  ft-sz-20' wx:elif="{{item.status == '2'}}">
+                    <view class='flx_1 dis_flx flx_dir_row ju-r' style='text-align:right; justify-content:flex-end ;' wx:if="{{item.status == '2'}}">
+                      <view class='pd-lr-10 txt-c'>
+                        <text class='ft-co-a1  bd-rad-5 np-btn bd-rs-10 ft-co-f50' style='border:1px solid #a1a1a1;' bindtap='onPayMoney' data-id='{{idx}}'>退款中</text>
+                      </view>
+                    </view>
+                  </view>
+                  <!-- 确认取货 -->
+                  <view class='dis_flx flx_dir_row  ft-sz-20' wx:elif="{{item.status == '3'}}">
+                    <view class='flx_1 dis_flx flx_dir_row ju-r' style='text-align:right; justify-content:flex-end ;' wx:if="{{item.status == '3'}}">
+                      <view class='pd-lr-10 txt-c'>
+                        <text class='ft-co-a1  bd-rad-5 np-btn bd-rs-10 ft-co-f50' style='border:1px solid #a1a1a1;' bindtap='onPayMoney' data-id='{{idx}}'>已退款</text>
+                      </view>
+                    </view>
+                  </view>
+                  <!-- 确认取货 -->
+                  <view class='dis_flx flx_dir_row  ft-sz-20' wx:elif="{{item.status == '4'}}">
+                    <view class='flx_1 dis_flx flx_dir_row ju-r' style='text-align:right; justify-content:flex-end ;' wx:if="{{item.status == '4'}}">
+                      <view class='pd-lr-10 txt-c'>
+                        <text class='ft-co-a1  bd-rad-5 np-btn bd-rs-10 ft-co-f50' style='border:1px solid #a1a1a1;' bindtap='onPayMoney' data-id='{{idx}}'>已销课</text>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:else>
+        <view class='dis_flx ju-c mt-100 lh-90' style='padding-bottom:100rpx;'>
+          <image src='{{imageUrl}}/image/785378508496801789.png' style='width:334rpx;height:345rpx;'></image>
+        </view>
+
+      </view>
+    </view>
+
+    <!-- 代付款 -->
+    <view wx:elif="{{currentTab == 1}}">
+      <view wx:if='{{goods.length>0}}'>
+        <view class='bk-co-30 pd-lr-20 bd-rs-10 mt-20' wx:for="{{goods}}" id='channelSwiper' wx:for-index="idx">
+          <view class=''>
+            <view class=' pd-tb-30' style='' data-id='{{item.productid}}' bindtap='jumpGoodsDetail'>
+              <view class=' dis_flx flx_dir_row ft-co-ff ' style=''>
+                <view class=' ' style='width:150rpx;height:150rpx;'>
+                  <image src="{{item.image}}" class="slide-image bd-rs-10" style="width:150rpx;height:150rpx" />
+                </view>
+                <view class='pd-lr-20 flx_1 dis_flx al-c'>
+                  <view>
+                    <view class=' ft-sz-30  '>{{item.name}}</view>
+                    <view class='mt-20 ft-sz-24 ft-co-f50'>
+                      <text class='ft-co-ff'>原价：</text> ￥{{item.price}}元</view>
+                    <view class='mt-20 ft-sz-24'>
+                      <text class='ft-co-f50'>{{item.date}}</text>
+                    </view>
+                  </view>
+                </view>
+                <view class='txt-r mt-20 dis_flx al-c ju-r' style='width:150rpx;'>
+                  <!-- 代付款 -->
+                  <view class='dis_flx flx_dir_row  ft-sz-20' wx:if="{{item.status == '1'}}">
+                    <view class='flx_1 dis_flx flx_dir_row txt-r' style='text-align:right;' wx:if="{{item.status == '1'}}">
+                      <view class='pd-lr-10 txt-c'>
+                        <text class='ft-co-33  bd-rad-5 np-btn bd-rs-10 ft-co-00 bk-co-f50' bindtap='onPayMoney' data-id='{{idx}}'>已约课</text>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:else>
+        <view class='dis_flx ju-c  mt-100 lh-90' style='padding-bottom:100rpx;'>
+          <image src='{{imageUrl}}/image/785378508496801789.png' style='width:334rpx;height:345rpx;'></image>
+        </view>
+
+      </view>
+    </view>
+    <!-- 待收货 -->
+    <view wx:elif="{{currentTab == 2}}">
+      <view wx:if='{{goods.length>0}}'>
+        <view class='bk-co-30 pd-lr-20 bd-rs-10 mt-20' wx:for="{{goods}}" id='channelSwiper' wx:for-index="idx">
+          <view class=''>
+            <view class=' pd-tb-30' style='' data-id='{{item.productid}}' bindtap='jumpGoodsDetail'>
+              <view class=' dis_flx flx_dir_row ft-co-ff ' style=''>
+                <view class=' ' style='width:150rpx;height:150rpx;'>
+                  <image src="{{item.image}}" class="slide-image bd-rs-10" style="width:150rpx;height:150rpx" />
+                </view>
+                <view class='pd-lr-20 flx_1 dis_flx al-c'>
+                  <view>
+                    <view class=' ft-sz-30  '>{{item.name}}</view>
+                    <view class='mt-20 ft-sz-24 ft-co-f50'>
+                      <text class='ft-co-ff'>原价：</text> ￥{{item.price}}元</view>
+                    <view class='mt-20 ft-sz-24'>
+                      <text class='ft-co-f50'>{{item.date}}</text>
+                    </view>
+                  </view>
+                </view>
+                <view class='txt-r mt-20 dis_flx al-c ju-r' style='width:150rpx;'>
+                  <!-- 确认取货 -->
+                  <view class='dis_flx flx_dir_row  ft-sz-20' wx:if="{{item.status == '4'}}">
+                    <view class='flx_1 dis_flx flx_dir_row ju-r' style='text-align:right; justify-content:flex-end ;' wx:if="{{item.status == '4'}}">
+                      <view class='pd-lr-10 txt-c'>
+                        <text class='ft-co-a1  bd-rad-5 np-btn bd-rs-10 ft-co-f50' style='border:1px solid #a1a1a1;' bindtap='onPayMoney' data-id='{{idx}}'>已销课</text>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:else>
+        <view class='dis_flx ju-c  mt-100 lh-90' style='padding-bottom:100rpx;'>
+          <image src='{{imageUrl}}/image/785378508496801789.png' style='width:334rpx;height:345rpx;'></image>
+        </view>
+
+      </view>
+    </view>
+    <!-- 已完成 -->
+    <view wx:elif="{{currentTab == 3}}">
+      <view wx:if='{{goods.length>0}}'>
+        <view class='bk-co-30 pd-lr-20 bd-rs-10 mt-20' wx:for="{{goods}}" id='channelSwiper' wx:for-index="idx">
+          <view class=''>
+            <view class=' pd-tb-30' style='' data-id='{{item.productid}}' bindtap='jumpGoodsDetail'>
+              <view class=' dis_flx flx_dir_row ft-co-ff ' style=''>
+                <view class=' ' style='width:150rpx;height:150rpx;'>
+                  <image src="{{item.image}}" class="slide-image bd-rs-10" style="width:150rpx;height:150rpx" />
+                </view>
+                <view class='pd-lr-20 flx_1 dis_flx al-c'>
+                  <view>
+                    <view class=' ft-sz-30  '>{{item.name}}</view>
+                    <view class='mt-20 ft-sz-24 ft-co-f50'>
+                      <text class='ft-co-ff'>原价：</text> ￥{{item.price}}元</view>
+                    <view class='mt-20 ft-sz-24'>
+                      <text class='ft-co-f50'>{{item.date}}</text>
+                    </view>
+                  </view>
+                </view>
+                <view class='txt-r mt-20 dis_flx al-c ju-r' style='width:150rpx;'>
+                  <!-- 确认取货 -->
+                  <view class='dis_flx flx_dir_row  ft-sz-20' wx:if="{{item.status == '4'}}">
+                    <view class='flx_1 dis_flx flx_dir_row ju-r' style='text-align:right; justify-content:flex-end ;' wx:if="{{item.status == '4'}}">
+                      <view class='pd-lr-10 txt-c'>
+                        <text class='ft-co-a1  bd-rad-5 np-btn bd-rs-10 ft-co-f50' style='border:1px solid #a1a1a1;' bindtap='onPayMoney' data-id='{{idx}}'>退款</text>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:else>
+        <view class='dis_flx ju-c  mt-100 lh-90' style='padding-bottom:100rpx;'>
+          <image src='{{imageUrl}}/image/785378508496801789.png' style='width:334rpx;height:345rpx;'></image>
+        </view>
+
+      </view>
+    </view>
+
+
+  </view>
+
+
+
+
+
+</view>
